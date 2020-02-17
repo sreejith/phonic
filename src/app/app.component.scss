@@ -1,0 +1,22 @@
+::ng-deep aside {
+  background-color: #fff;
+  padding: 2em 1em;
+  // width: 500px;
+}
+
+:host ::ng-deep .ng-sidebar--bottom {
+  height: 100vh;
+  padding: 0px;
+}
+
+tbody {
+  display:block;
+  height: calc(100vh - 150px);
+  overflow:auto;
+}
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+
