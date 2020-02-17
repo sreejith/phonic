@@ -355,32 +355,77 @@
         [closeOnClickBackdrop]="menuCloseOnClickBackdrop"
         [showBackdrop]="menuShowBackdrop"
         [animate]="menuAnimate">
-        <div class="toolbar" role="banner">
-          <!-- <a class="ml-2 mt-2" href='https://education.nsw.gov.au/'>
-            <img width="40" alt="Angular Logo" src="assets/images/DoE_Logo_K_RGB.svg"/>
-          </a>
-          <div class="mr-2">
-            <strong><p class="h4 mt-2" style="font-weight: 700;">ALAN</p> </strong>
-          </div> -->
-          <div class="">
-            <!-- <strong><p class="h4 mt-2" style="font-weight: 700;">ALAN</p> </strong> -->
+        <!-- <div style="height: auto; width: 100%; display: inline-block; border-bottom: 1px solid #ccc;">
+          <div class="" style="display: inline-block;">
             <div class="mt-2"><img width="20"class="ml-2 mr-2" alt="Angular Logo" src="assets/images/DoE_Logo_K_RGB.svg"/> ALAN - Phonic screening check</div>
             <div class="h4 mt-1 ml-2" style="font-weight: 700;">Adams Jane</div>
           </div>
-          <!-- <span class="h4 mt-2 ml-2" style="font-weight: 700;">Adams Jane</span> -->
+
+          <div class="btn-group pull-right" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-primary  ">Review</button>
+            <button type="button" class="btn btn-primary  ">Mark remaining as...</button>
+            <button type="button" class="btn btn-primary  ">Instructions</button>
+            <button type="button" class="btn btn-primary  ">Help</button>
+            <button type="button" class="btn btn-primary  " (click)="toggleBottomSidebar()">Exit</button>
+          </div>
+          <ul class="pull-right" style="display: inline-block; margin-top: 8px;">
+            <li><a href="">Review</a></li>
+            <li><a href="">Mark remaining as...</a></li>
+            <li><a href="">Instructions</a></li>
+            <li><a href="">Help</a></li>
+            <li><a (click)="toggleBottomSidebar()">Exit</a></li>
+          </ul>
+        </div> -->
+         <div class="toolbar" role="banner">
+          <div class="">
+            <div class="mt-2"><img width="20"class="ml-2 mr-2" alt="Angular Logo" src="assets/images/DoE_Logo_K_RGB.svg"/> ALAN - Phonic screening check</div>
+            <div class="h4 mt-1 ml-2" style="font-weight: 700;">Adams Jane</div>
+          </div>
           <div class="spacer"></div>
-          <button class="btn btn-primary btn-sm mr-2" (click)="toggleBottomSidebar()">Exit</button>
+          <button class="btn btn-primary btn-sm mr-2 d-block d-sm-none" (click)="toggleBottomSidebar()">Exit</button>
+          <div class="btn-group d-none d-md-block d-sm-block" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-primary  ">Review</button>
+            <button type="button" class="btn btn-primary  ">Mark remaining as...</button>
+            <button type="button" class="btn btn-primary  ">Instructions</button>
+            <button type="button" class="btn btn-primary  ">Help</button>
+            <button type="button" class="btn btn-primary  " (click)="toggleBottomSidebar()">Exit</button>
+          </div>
         </div>
-        <div class="toolbar" role="banner" style="height: auto;">
-          <div class="spacer"></div>
-          <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <div style="height: auto; width: 100%; display: inline-block; border-bottom: 1px solid #ccc;" class="d-block d-sm-none">
+          <div class="btn-group pull-right m-1" role="group" aria-label="Button group with nested dropdown">
             <button type="button" class="btn btn-primary  ">Review</button>
             <button type="button" class="btn btn-primary  ">Mark remaining as...</button>
             <button type="button" class="btn btn-primary  ">Instructions</button>
             <button type="button" class="btn btn-primary  ">Help</button>
           </div>
         </div>
-        <p><ngb-progressbar type="success" [value]="25">10/40 completed</ngb-progressbar></p>
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </nav> -->
+        <!-- <div><p><ngb-progressbar type="success" [value]="25">10/40 completed</ngb-progressbar></p></div>
         <div class="content mb-0">
           <div style="height: calc(100vh - 250px);width: 100%; overflow: auto; padding: 5px;">
             <div *ngFor="let question of questions; index as i" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 10px; padding: 10px; border-radius: .25rem; padding-bottom: 0px;">
@@ -403,10 +448,9 @@
                   </div>
                 </div>
               </div>
-              <!-- ***************************************************** -->
             </div>
           </div>
-        </div>
+        </div> -->
     </ng-sidebar>
 
 <div ng-sidebar-content>
