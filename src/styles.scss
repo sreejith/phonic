@@ -15,3 +15,8 @@ body,
 app-root {
   height: 100%;
 }
+
+.ng-sidebar--animate {
+  -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0, 0, 0.3, 1);
+}
