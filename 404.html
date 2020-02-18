@@ -5,16 +5,20 @@
   <title>Phonic</title>
   <base href="https://sreejith.github.io/phonic/">  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+   let vh = window.innerHeight * 0.01;
+   // Then we set the value in the --vh custom property to the root of the document
+   document.documentElement.style.setProperty('--vh', `${vh}px`);
+   // We listen to the resize event
+   window.addEventListener('resize', () => {
+     // We execute the same script as before
+     let vh = window.innerHeight * 0.01;
+     document.documentElement.style.setProperty('--vh', `${vh}px`);
+   });
+  </script>
 <link rel="stylesheet" href="styles.e4dbf8e8e93d1e096174.css"></head>
 <body>
   <app-root></app-root>
 <script src="runtime-es2015.c5fa8325f89fc516600b.js" type="module"></script><script src="runtime-es5.c5fa8325f89fc516600b.js" nomodule defer></script><script src="polyfills-es5.3e8196928d184a6e5319.js" nomodule defer></script><script src="polyfills-es2015.5b10b8fd823b6392f1fd.js" type="module"></script><script src="main-es2015.6ea92f5d111683a9b14c.js" type="module"></script><script src="main-es5.6ea92f5d111683a9b14c.js" nomodule defer></script></body>
-<script>
- function setDocHeight() {
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
- };
-
-  addEventListener('resize', setDocHeight);
-  addEventListener('orientationchange', setDocHeight);
-</script>
 </html>
