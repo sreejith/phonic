@@ -16,6 +16,12 @@
      let vh = window.innerHeight * 0.01;
      document.documentElement.style.setProperty('--vh', `${vh}px`);
    });
+   // We listen to the orientation change event
+   window.addEventListener('orientationchange', () => {
+     // We execute the same script as before
+     let vh = window.innerHeight * 0.01;
+     document.documentElement.style.setProperty('--vh', `${vh}px`);
+   });
   </script>
 <link rel="stylesheet" href="styles.e4dbf8e8e93d1e096174.css"></head>
 <body>
