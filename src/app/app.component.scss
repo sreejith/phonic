@@ -5,8 +5,11 @@
 }
 
 :host ::ng-deep .ng-sidebar--bottom {
-  height: 100vh;
+  // height: 100vh;
   padding: 0px;
+  height: 100%;
+height: 100vh;
+height: calc(var(--vh, 1vh) * 100);
 }
 
 tbody {

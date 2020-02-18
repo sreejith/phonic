@@ -10,4 +10,12 @@
 <body>
   <app-root></app-root>
 </body>
+<script>
+ function setDocHeight() {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
+ };
+
+  addEventListener('resize', setDocHeight);
+  addEventListener('orientationchange', setDocHeight);
+</script>
 </html>
