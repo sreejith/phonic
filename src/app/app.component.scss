@@ -14,7 +14,8 @@
 
 tbody {
   display:block;
-  height: calc(100vh - 270px);
+  // height: calc(100vh - 270px);
+  height: calc(var(--vh,1vh) * 100 - 274px);
   overflow:auto;
 }
 thead, tbody tr {
