@@ -497,7 +497,7 @@
 </div>
 <nav class="navbar navbar-light bg-light mb-2 p-0 d-none d-md-block d-sm-block shadow-sm" style="width: 100%; border: 1px solid #ccc; ">
   <span class="row ml-3" style="width: 99%;">
-    <a class="result-menu text-center pt-1 pl-2 pr-2 mr-3 mt-1 activeFilter" style=" height: 38px; width: 125px; cursor: pointer;" (click)="filterResults($event, 'all')">
+    <a class="result-menu text-center pt-1 pl-2 pr-2 mr-3 mt-1 activeFilter" style=" height: 38px; width: 125px; cursor: pointer;" (click)="filterResults($event, 'all', 'all')">
       All students
     </a>
     <a class="result-menu text-center pl-2 pr-2 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 40, 28)">
@@ -512,7 +512,7 @@
       <div class="badge badge-primary badge-pill p-2 mr-2" style="color: #151515; background-color: #F27B75; font-size: 12px;">&nbsp;&nbsp;&nbsp;19-0&nbsp;&nbsp;&nbsp;</div>
       critical concern
     </a>
-    <a class="result-menu text-center pl-1 pr-1 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 'na')">
+    <a class="result-menu text-center pl-1 pr-1 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 'na', 'na')">
       <div class="badge badge-primary badge-pill p-2 mr-2" style="color: #151515; background-color: #E5E5E5; font-size: 12px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</div>
       not assessed
     </a>
@@ -522,7 +522,7 @@
 <div class="content mb-0 mt-2" role="main">
     <nav class="navbar navbar-light bg-light mb-2  p-0 pt-2 d-block d-sm-none shadow-sm" style="width: 100%; border: 1px solid #ccc; border-radius: 5px;">
       <span class="row" style="width: 100%; margin: 0px;">
-        <a class="col-2 text-center pl-2 pr-2 activeFilter" (click)="filterResults($event, 'all')">
+        <a class="col-2 text-center pl-2 pr-2 activeFilter" (click)="filterResults($event, 'all', 'all')">
           <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #fff; font-size: 12px;">&nbsp;&nbsp;All&nbsp;&nbsp;</div>
           <div class="badge-text">
             students
@@ -546,7 +546,7 @@
             critical
           </div>
         </a>
-        <a class="col-2 text-center pl-1 pr-1" (click)="filterResults($event, 'na')">
+        <a class="col-2 text-center pl-1 pr-1" (click)="filterResults($event, 'na', 'na')">
           <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #E5E5E5; font-size: 12px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</div>
           <div class="badge-text">
             na
