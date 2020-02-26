@@ -1,0 +1,46 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'filterResults'
+})
+export class FilterResultsPipe implements PipeTransform {
+
+  transform(value: any, ...args: any[]): any {
+    let filteredArry: any[] = [];
+    switch (args[0][0]) {
+      case 'na':
+          for (const student of value) { // Typescript Example of::  for..of Loop
+            if (student.result === 'na') {
+              filteredArry.push(student);
+            }
+          }
+          break;
+      case 40:
+          for (const student of value) { // Typescript Example of::  for..of Loop
+            if (student.result <= 40 && student.result >= 28) {
+              filteredArry.push(student);
+            }
+          }
+          break;
+      case 27:
+          for (const student of value) { // Typescript Example of::  for..of Loop
+            if (student.result <= 27 && student.result >= 20) {
+              filteredArry.push(student);
+            }
+          }
+          break;
+      case 19:
+          for (const student of value) { // Typescript Example of::  for..of Loop
+            if (student.result <= 19 && student.result >= 0) {
+              filteredArry.push(student);
+            }
+          }
+          break;
+      default:
+          filteredArry = value;
+          break;
+    }
+    return filteredArry;
+  }
+
+}

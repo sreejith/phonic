@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 // 3rd party lib
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'ng-sidebar';
+import { FilterResultsPipe } from './pipes/filter-results.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FilterResultsPipe
   ],
   imports: [
     BrowserModule,

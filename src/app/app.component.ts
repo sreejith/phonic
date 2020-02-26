@@ -202,7 +202,7 @@ const STUDENTS: Student[] = [
     studentYear: 'Year 1',
     assessmentStatus: 'assessed',
     statusDate: '21/06/2020',
-    result: '24',
+    result: '30',
     resultCode: 'mild'
   },
   {
@@ -212,7 +212,7 @@ const STUDENTS: Student[] = [
     studentYear: 'Year 1',
     assessmentStatus: 'assessed',
     statusDate: '21/06/2020',
-    result: '24',
+    result: '35',
     resultCode: 'ok'
   },
   {
@@ -222,7 +222,7 @@ const STUDENTS: Student[] = [
     studentYear: 'Year 1',
     assessmentStatus: 'lodged',
     statusDate: '21/06/2020',
-    result: '24',
+    result: '11',
     resultCode: 'ok'
   },
   {
@@ -232,7 +232,7 @@ const STUDENTS: Student[] = [
     studentYear: 'Year 1',
     assessmentStatus: 'paused',
     statusDate: '21/06/2020',
-    result: '24',
+    result: '15',
     resultCode: 'na'
   },
   {
@@ -242,7 +242,7 @@ const STUDENTS: Student[] = [
     studentYear: 'Year 1',
     assessmentStatus: 'na',
     statusDate: '',
-    result: '24',
+    result: 'na',
     resultCode: ''
   }
 ];
@@ -263,6 +263,9 @@ export class AppComponent {
   opened = false;
   bottomMenuOpened = false;
 
+  questionListStart = 0;
+  questionListEnd = 4;
+
   menuMode = 'over';
   menuPosition = 'right';
   menuBottomPosition = 'bottom';
@@ -271,12 +274,54 @@ export class AppComponent {
   menuCloseOnClickBackdrop = true;
   menuAnimate = true;
 
+  resultFilter: any[] = ['all', 'all'];
+
   toggleSidebar() {
     this.opened = !this.opened;
   }
 
   toggleBottomSidebar() {
     this.bottomMenuOpened = !this.bottomMenuOpened;
+  }
+
+  filterResults(event, from, to) {
+    // event.preventDefault();
+    let parent = event.target.parentNode;
+    if (event.target.classList.contains('badge')) {
+      parent = parent.parentNode;
+    }
+    if (event.target.classList.contains('badge-text')) {
+      parent = parent.parentNode;
+    }
+
+    // for(let i = 0; i < parent.children.length; i++) {
+    //   parent.children[i].classList.remove('activeFilter');
+    // }
+
+    for (const child of parent.children) { // Typescript Example of::  for..of Loop
+      child.classList.remove('activeFilter');
+    }
+
+    if (event.target.classList.contains('badge')) {
+      event.target.parentNode.classList.add('activeFilter');
+    } else if (event.target.classList.contains('badge-text')) {
+      event.target.parentNode.classList.add('activeFilter');
+    } else {
+      event.target.classList.add('activeFilter');
+    }
+
+    if (from === 'all') {
+      this.resultFilter = ['all', 'all'];
+    } else if (from === 'na') {
+      this.resultFilter = ['na', 'na'];
+    } else if (from === 40) {
+      this.resultFilter = [40, 28];
+    } else if (from === 27) {
+      this.resultFilter = [27, 20];
+    } else if (from === 19) {
+      this.resultFilter = [19, 0];
+    }
+
   }
 
 }

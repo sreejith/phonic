@@ -15,7 +15,7 @@
 tbody {
   display:block;
   // height: calc(100vh - 270px);
-  height: calc(var(--vh,1vh) * 100 - 274px);
+  height: calc(var(--vh,1vh) * 100 - 248px);
   overflow:auto;
 }
 thead, tbody tr {
@@ -27,4 +27,26 @@ thead, tbody tr {
 :host ::ng-deep .ng-sidebar--animate {
   -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.3, 1) !important;
   transition: all 0.3s cubic-bezier(0, 0, 0.3, 1) !important;
+}
+
+.result-menu:link, .result-menu:visited {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 3px solid #041E42;
+//   border: none;
+//   padding: 15px 32px;
+//   text-align: center;
+//   -webkit-transition-duration: 0.4s;
+//   transition-duration: 0.4s;
+//   text-decoration: none;
+//  font-size: 16px;
+ cursor: pointer;
+}
+
+.result-menu:hover, .result-menu:active {
+  background-color: rgba(0, 0, 0, 0.05);
+  // border-bottom: 3px solid #041E42;
+}
+
+.activeFilter {
+  border-bottom: 3px solid #041E42;
 }

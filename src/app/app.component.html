@@ -431,7 +431,7 @@
         <div><p><ngb-progressbar type="success" [value]="25">10/40 completed</ngb-progressbar></p></div>
         <div class="content mb-0">
           <div style="height: calc(100vh - 250px);width: 100%; overflow: auto; padding: 5px;">
-            <div *ngFor="let question of questions; index as i" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 10px; padding: 10px; border-radius: .25rem; padding-bottom: 0px;">
+            <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 10px; padding: 10px; border-radius: .25rem; padding-bottom: 0px;">
               <div class="row">
                 <div class="col-7">
                 {{ question.questionNumber }} . <span class="card-title1" style="font-size: 32px; margin-bottom: 16px;">{{ question.question }}</span>
@@ -495,62 +495,63 @@
 <div class="toolbar" role="banner" style="background-color: #041E42; color: #fff;">
   <strong><p class="ml-4" style="font-size: 18px; font-weight: normal;">Phonics Screening check </p> </strong>
 </div>
-<nav class="navbar navbar-light bg-light mb-2 pl-0 pr-0 pb-0 d-none d-md-block d-sm-block shadow-sm" style="width: 100%; border: 1px solid #ccc; border-radius: 5px;">
-  <span class="row ml-3" style="width: 100%;">
-    <span class="text-center pt-1 pl-2 pr-2 mr-3 mt-1" style="border-bottom: 3px solid #041E42; height: 38px; width: 125px;">
+<nav class="navbar navbar-light bg-light mb-2 p-0 d-none d-md-block d-sm-block shadow-sm" style="width: 100%; border: 1px solid #ccc; ">
+  <span class="row ml-3" style="width: 99%;">
+    <a class="result-menu text-center pt-1 pl-2 pr-2 mr-3 mt-1 activeFilter" style=" height: 38px; width: 125px; cursor: pointer;" (click)="filterResults($event, 'all')">
       All students
-    </span>
-    <span class="text-center pl-2 pr-2 mr-3 mt-1" style="height: 38px;">
+    </a>
+    <a class="result-menu text-center pl-2 pr-2 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 40, 28)">
       <div class="badge badge-primary badge-pill p-2 mr-2" style="color: #151515; background-color: #27A7AE; font-size: 12px;">&nbsp;&nbsp;&nbsp;40-28&nbsp;&nbsp;&nbsp;</div>
       on track
-    </span>
-    <span class="text-center pl-2 pr-2 mr-3 mt-1" style="height: 38px;">
+    </a>
+    <a class="result-menu text-center pl-2 pr-2 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 27, 20)">
       <div class="badge badge-primary badge-pill p-2 mr-2" style="color: #151515; background-color: #E4CE7D; font-size: 12px;">&nbsp;&nbsp;&nbsp;27-20&nbsp;&nbsp;&nbsp;</div>
       mild concern
-    </span>
-    <span class="text-center pl-2 pr-2 mr-3 mt-1" style="height: 38px;">
+    </a>
+    <a class="result-menu text-center pl-2 pr-2 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 19, 0)">
       <div class="badge badge-primary badge-pill p-2 mr-2" style="color: #151515; background-color: #F27B75; font-size: 12px;">&nbsp;&nbsp;&nbsp;19-0&nbsp;&nbsp;&nbsp;</div>
       critical concern
-    </span>
-    <span class="text-center pl-1 pr-1 mr-3 mt-1" style="height: 38px;">
+    </a>
+    <a class="result-menu text-center pl-1 pr-1 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 'na')">
       <div class="badge badge-primary badge-pill p-2 mr-2" style="color: #151515; background-color: #E5E5E5; font-size: 12px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</div>
       not assessed
-    </span>
+    </a>
   </span>
 </nav>
 
 <div class="content mb-0 mt-2" role="main">
-    <nav class="navbar navbar-light bg-light mb-2  pl-0 pr-0 d-block d-sm-none" style="width: 100%; border: 1px solid #ccc; border-radius: 5px;">
+    <nav class="navbar navbar-light bg-light mb-2  p-0 pt-2 d-block d-sm-none shadow-sm" style="width: 100%; border: 1px solid #ccc; border-radius: 5px;">
       <span class="row" style="width: 100%; margin: 0px;">
-        <span class="col-2 text-center pl-2 pr-2">
+        <a class="col-2 text-center pl-2 pr-2 activeFilter" (click)="filterResults($event, 'all')">
           <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #fff; font-size: 12px;">&nbsp;&nbsp;All&nbsp;&nbsp;</div>
-          <div>students</div>
-        </span>
-        <span class="col-3 text-center pl-2 pr-2">
+          <div class="badge-text">
+            students
+          </div>
+        </a>
+        <a class="col-3 text-center pl-2 pr-2" (click)="filterResults($event, 40, 28)">
           <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #27A7AE; font-size: 12px;">40-28</div>
-          <div>on track</div>
-        </span>
-        <span class="col-2 text-center pl-2 pr-2">
+          <div class="badge-text">
+            on track
+          </div>
+        </a>
+        <a class="col-2 text-center pl-2 pr-2" (click)="filterResults($event, 27, 20)">
           <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #E4CE7D; font-size: 12px;">27-20</div>
-          <div>
-            <span class="d-none d-md-block d-sm-block">mild concern</span>
-            <span class="d-block d-sm-none">mild</span>
+          <div class="badge-text">
+            mild
           </div>
-        </span>
-        <span class="col-3 text-center pl-2 pr-2">
+        </a>
+        <a class="col-3 text-center pl-2 pr-2" (click)="filterResults($event, 19, 0)">
           <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #F27B75; font-size: 12px;">19-0</div>
-          <div>
-            <span class="d-none d-md-block d-sm-block">critical concern</span>
-            <span class="d-block d-sm-none">critical</span>
+          <div class="badge-text">
+            critical
           </div>
-        </span>
-        <span class="col-2 text-center pl-1 pr-1">
+        </a>
+        <a class="col-2 text-center pl-1 pr-1" (click)="filterResults($event, 'na')">
           <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #E5E5E5; font-size: 12px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</div>
-          <div>
-            <span class="d-none d-md-block d-sm-block">not assessed</span>
-            <span class="d-block d-sm-none">na</span>
+          <div class="badge-text">
+            na
           </div>
-        </span>
+        </a>
       </span>
     </nav>
     <table class="table table-striped mb-0 d-none d-md-block d-sm-block" style="border: 1px solid #ccc;">
@@ -563,7 +564,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let student of students; index as i">
+      <tr *ngFor="let student of students | filterResults:resultFilter; index as i">
         <td>
           <div style="font-size: 18px;">{{ student.name }}</div>
           <div style="font-size: 13px;">{{ student.assessmentStatus == 'na' ? 'not assessed': student.assessmentStatus }}  {{ student.statusDate }}</div>
@@ -609,8 +610,8 @@
       </div>
     </div> -->
 
-    <div class="d-block d-sm-none" style="height: calc(var(--vh,1vh) * 100 - 222px); overflow: auto;">
-      <div class="card p-0 shadow-sm" *ngFor="let student of students; index as i" style="height: auto; width: 100%; border: 1px solid #ccc; display: inline-block;" >
+    <div class="d-block d-sm-none" style="width: 100%; height: calc(var(--vh,1vh) * 100 - 222px); overflow: auto;">
+      <div class="card p-0 shadow-sm" *ngFor="let student of students | filterResults:resultFilter; index as i" style="height: auto; width: 100%; border: 1px solid #ccc; display: inline-block;" >
         <div class="card-body pb-2 pt-2" style="background-color: #fff;">
           <div class="row">
             <div class="col-9" style="border-right: 1px solid #ebeff2;">
@@ -631,7 +632,7 @@
                   </span>
                 </div>
               </div>
-              
+
             </div>
             <div class="col-3 my-auto pl-1 pr-0">
               <!-- <div class="align-middle" style="width: 100%; text-align: center; border: 1px solid #ccc; border-radius: 24px;">{{ student.result }}</div> -->
