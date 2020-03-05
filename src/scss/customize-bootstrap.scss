@@ -1,5 +1,6 @@
 $primary: #337ab7 !default;
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 .btn-primary {
   background-color: #041E42;

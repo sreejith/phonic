@@ -4,6 +4,7 @@
 
 html * {
   font-family: 'Frutiger', sans-serif;
+  // font-size: 1rem;
 }
 
 body {
@@ -15,3 +16,21 @@ body,
 app-root {
   height: 100%;
 }
+
+// @include media-breakpoint-up(sm) {
+//   html {
+//     font-size: 1.2rem;
+//   }
+// }
+
+// @include media-breakpoint-up(md) {
+//   html {
+//     font-size: 1.4rem;
+//   }
+// }
+
+// @include media-breakpoint-up(lg) {
+//   html {
+//     font-size: 1.6rem;
+//   }
+// }

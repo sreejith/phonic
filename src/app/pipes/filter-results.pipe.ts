@@ -7,6 +7,7 @@ export class FilterResultsPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
     let filteredArry: any[] = [];
+    console.log(args[0][0]);
     switch (args[0][0]) {
       case 'na':
           for (const student of value) { // Typescript Example of::  for..of Loop
@@ -36,6 +37,27 @@ export class FilterResultsPipe implements PipeTransform {
             }
           }
           break;
+      case 'assessed':
+        for (const student of value) { // Typescript Example of::  for..of Loop
+          if (student.assessmentStatus === 'assessed' || student.assessmentStatus === 'paused') {
+            filteredArry.push(student);
+          }
+        }
+        break;
+      case 'paused':
+        for (const student of value) { // Typescript Example of::  for..of Loop
+          if (student.assessmentStatus === 'paused' || student.assessmentStatus === 'assessed') {
+            filteredArry.push(student);
+          }
+        }
+        break;
+      case 'lodged':
+        for (const student of value) { // Typescript Example of::  for..of Loop
+          if (student.assessmentStatus === 'lodged') {
+            filteredArry.push(student);
+          }
+        }
+        break;
       default:
           filteredArry = value;
           break;

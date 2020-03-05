@@ -275,6 +275,8 @@ export class AppComponent {
   menuAnimate = true;
 
   resultFilter: any[] = ['all', 'all'];
+  filteredBy = '';
+  showFilteredByText = false;
 
   toggleSidebar() {
     this.opened = !this.opened;
@@ -307,19 +309,51 @@ export class AppComponent {
     } else if (event.target.classList.contains('badge-text')) {
       event.target.parentNode.classList.add('activeFilter');
     } else {
-      event.target.classList.add('activeFilter');
+      if (!event.target.classList.contains('dropdown-item')) {
+        event.target.classList.add('activeFilter');
+      }
     }
 
-    if (from === 'all') {
-      this.resultFilter = ['all', 'all'];
-    } else if (from === 'na') {
-      this.resultFilter = ['na', 'na'];
-    } else if (from === 40) {
-      this.resultFilter = [40, 28];
-    } else if (from === 27) {
-      this.resultFilter = [27, 20];
-    } else if (from === 19) {
-      this.resultFilter = [19, 0];
+    switch (from) {
+      case 'na':
+        this.resultFilter = ['na', 'na'];
+        this.filteredBy = 'not assessed students';
+        this.showFilteredByText = true;
+        break;
+      case 40:
+        this.resultFilter = [40, 28];
+        this.filteredBy = 'on track students';
+        this.showFilteredByText = true;
+        break;
+      case 27:
+        this.resultFilter = [27, 20];
+        this.filteredBy = 'mild concerned students';
+        this.showFilteredByText = true;
+        break;
+      case 19:
+        this.resultFilter = [19, 0];
+        this.filteredBy = 'critical concerned students';
+        this.showFilteredByText = true;
+        break;
+      case 'assessed':
+        this.resultFilter = ['assessed', 'assessed'];
+        this.filteredBy = 'assessment paused or unlodged students';
+        this.showFilteredByText = true;
+        break;
+      case 'paused':
+        this.resultFilter = ['paused', 'paused'];
+        this.filteredBy = 'assessment paused or unlodged students';
+        this.showFilteredByText = true;
+        break;
+      case 'lodged':
+        this.resultFilter = ['lodged', 'lodged'];
+        this.filteredBy = 'lodged students';
+        this.showFilteredByText = true;
+        break;
+      default:
+        this.resultFilter = ['all', 'all'];
+        this.showFilteredByText = false;
+        break;
     }
 
   }

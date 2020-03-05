@@ -492,8 +492,64 @@
   </div>
 </div>
 
-<div class="toolbar" role="banner" style="background-color: #041E42; color: #fff;">
-  <strong><p class="ml-4" style="font-size: 18px; font-weight: normal;">Phonics Screening check </p> </strong>
+<div class="toolbar" role="banner" style="background-color: #041E42; color: #fff; height: 108px;">
+  <div class="ml-4" style="width: 98%;">
+    <p class="h5" style="font-weight: normal;">Phonics screening check</p>
+    <div class="">
+      <form>
+        <div class="form-row mt-2">
+          <div class="form-group mb-0 mr-4">
+            <label for="yearLevel" class="mb-0">Select year level</label>
+            <!-- <select id="yearLevel" class="form-control" style="width: 200px;">
+              <option selected>Year 1</option>
+              <option selected>Year 2</option>
+              <option selected>Year 3</option>
+              <option selected>Year 4</option>
+              <option selected>Year 5</option>
+              <option selected>Year 6</option>
+              <option selected>Year 7</option>
+              <option selected>Year 8</option>
+              <option selected>Year 9</option>
+              <option selected>Year 10</option>
+              <option selected>Year 11</option>
+              <option selected>Year 12</option>
+            </select> -->
+            <ng-select
+                [items]="students"
+                bindLabel="name"
+                [multiple]="false"
+                placeholder="Select year"
+                >
+            </ng-select>
+          </div>
+          <div class="form-group  mb-0">
+            <label for="rollClass" class="mb-0">Select class or group</label>
+            <!-- <select id="rollClass" class="form-control" style="width: 200px;">
+              <option selected>Select class or group</option>
+            </select> -->
+            <ng-select
+                [items]="students"
+                bindLabel="name"
+                [multiple]="false"
+                placeholder="Select class"
+                >
+            </ng-select>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="ml-4" style="font-size: 18px; font-weight: normal;">Phonics Screening check </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+    </div>
+  </div> -->
 </div>
 <nav class="navbar navbar-light bg-light mb-2 p-0 d-none d-md-block d-sm-block shadow-sm" style="width: 100%; border: 1px solid #ccc; ">
   <span class="row ml-3" style="width: 99%;">
@@ -517,6 +573,14 @@
       not assessed
     </a>
   </span>
+  <!-- <div ngbDropdown class="d-inline-block ml-5">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter by action</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem>Start</button>
+      <button ngbDropdownItem>Continue progress</button>
+      <button ngbDropdownItem>Lodged</button>
+    </div>
+  </div> -->
 </nav>
 
 <div class="content mb-0 mt-2" role="main">
@@ -554,10 +618,31 @@
         </a>
       </span>
     </nav>
+
+    <ng-template #popContent>
+      <button type="button" class="btn btn-primary btn-sm btn-block" (click)="filterResults($event, 'lodged', 'lodged')">Lodged</button>
+      <button type="button" class="btn btn-primary btn-sm btn-block" (click)="filterResults($event, 'assessed', 'assessed')">Continue</button>
+      <button type="button" class="btn btn-primary btn-sm btn-block" (click)="filterResults($event, 'na', 'na')">Start</button>
+      <!-- <button type="button" class="btn btn-primary btn-sm btn-block" (click)="filterResults($event, 'all', 'all')">Clear filter</button> -->
+    </ng-template>
+    <ng-template #popTitle>
+      <i class="fa fa-filter fa-2" aria-hidden="true"></i>&nbsp;&nbsp;Filter by: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="badge badge-primary badge-pill p-2" style="color: #fff; border-color: #041E42; font-size: 12px; cursor: pointer;" (click)="filterResults($event, 'all', 'all')">Clear filter</span>
+    </ng-template>
+
+    <div class="d-none d-md-block d-sm-block mb-2" style="width: 100%;">
+      <span class="mt-1" style="display: inline-block;" *ngIf="showFilteredByText">
+        The result is filtered by <strong>{{filteredBy}}</strong>&nbsp;&nbsp;
+        <span class="clear-filter" (click)="filterResults($event, 'all', 'all')">X&nbsp;&nbsp;&nbsp;Clear filter</span>
+      </span>
+      <button class="btn btn-outline-primary btn-sm pull-right" id="dropdownBasic1" [ngbPopover]="popContent" [popoverTitle]="popTitle" placement="bottom" popoverClass="popover-custom"><i class="fa fa-filter fa-2" aria-hidden="true"></i>&nbsp;&nbsp;Filter by:</button>
+    </div>
+
     <table class="table table-striped mb-0 d-none d-md-block d-sm-block" style="border: 1px solid #ccc;">
       <thead>
       <tr>
         <th scope="col">Student</th>
+        <!-- <th scope="col">Action &nbsp;&nbsp; <i class="fa fa-filter fa-2" aria-hidden="true" style="cursor: pointer;" [ngbPopover]="popContent" [popoverTitle]="popTitle" placement="bottom" popoverClass="popover-custom"></i> </th> -->
         <th scope="col">Action</th>
         <th scope="col">Result</th>
         <th scope="col">Summary</th>

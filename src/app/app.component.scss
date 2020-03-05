@@ -15,7 +15,7 @@
 tbody {
   display:block;
   // height: calc(100vh - 270px);
-  height: calc(var(--vh,1vh) * 100 - 248px);
+  height: calc(var(--vh,1vh) * 100 - 330px);
   overflow:auto;
 }
 thead, tbody tr {
@@ -49,4 +49,31 @@ thead, tbody tr {
 
 .activeFilter {
   border-bottom: 3px solid #041E42;
+}
+
+:host ::ng-deep.ng-select .ng-select-container  {
+  border-radius: 0;
+}
+
+:host ::ng-deep .popover-custom {
+  width: 500px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.clear-filter {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #212529;
+  background-color: #f8f9fa;
 }
