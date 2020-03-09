@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'ng-sidebar';
 import { FilterResultsPipe } from './pipes/filter-results.pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AppRoutingModule,
     NgbModule,
     SidebarModule.forRoot(),
-    NgSelectModule
+    NgSelectModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

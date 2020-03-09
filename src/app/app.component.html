@@ -631,7 +631,7 @@
     </ng-template>
 
     <div class="d-none d-md-block d-sm-block mb-2" style="width: 100%;">
-      <span class="mt-1" style="display: inline-block;" *ngIf="showFilteredByText">
+      <span class="mt-1 bg-light" style="display: inline-block; border: 1px solid #ccc; padding: 5px; border-radius: 5px;" *ngIf="showFilteredByText">
         The result is filtered by <strong>{{filteredBy}}</strong>&nbsp;&nbsp;
         <span class="clear-filter" (click)="filterResults($event, 'all', 'all')">X&nbsp;&nbsp;&nbsp;Clear filter</span>
       </span>
