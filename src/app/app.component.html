@@ -378,7 +378,7 @@
         </div> -->
          <div class="toolbar" role="banner">
           <div class="">
-            <div class="mt-2 ml-2">Phonics screening check</div>
+            <div class="mt-2 ml-2">Phonics screening check Trial</div>
             <div class="h4 mt-1 ml-2" style="font-weight: 700;">Adams Jane</div>
           </div>
           <div class="spacer"></div>
@@ -494,7 +494,7 @@
 
 <div class="toolbar" role="banner" style="background-color: #041E42; color: #fff; height: 108px;">
   <div class="ml-4" style="width: 98%;">
-    <p class="h5" style="font-weight: normal;">Phonics screening check</p>
+    <p class="h5" style="font-weight: normal;">Phonics screening check Trial</p>
     <div class="">
       <form>
         <div class="form-row mt-2">
@@ -674,14 +674,29 @@
         </td>
         <td>
           <div class="" style="width:74px;">
-            <button type="button" class="btn btn-primary btn-sm btn-block" *ngIf="student.assessmentStatus == 'lodged'" (click)="toggleBottomSidebar()">Lodged</button>
+            <!-- <button type="button" class="btn btn-primary btn-sm btn-block" *ngIf="student.assessmentStatus == 'lodged'" (click)="toggleBottomSidebar()">Lodged</button>
             <button type="button" class="btn btn-primary btn-sm btn-block" *ngIf="student.assessmentStatus == 'assessed'" (click)="toggleBottomSidebar()">Continue</button>
             <button type="button" class="btn btn-primary btn-sm btn-block" *ngIf="student.assessmentStatus == 'paused'" (click)="toggleBottomSidebar()">Continue</button>
-            <button type="button" class="btn btn-primary btn-sm btn-block" *ngIf="student.assessmentStatus == 'na'" (click)="toggleBottomSidebar()">Start</button>
+            <button type="button" class="btn btn-primary btn-sm btn-block" *ngIf="student.assessmentStatus == 'na'" (click)="toggleBottomSidebar()">Start</button> -->
+            <button type="button" class="btn btn-light btn-sm btn-block" style="border: 1px solid #ccc;"  *ngIf="student.assessmentStatus == 'lodged'" [disabled]="student.assessmentStatus == 'lodged'">Lodged</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block"  *ngIf="student.assessmentStatus == 'assessed'" (click)="toggleBottomSidebar()">Continue</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block"  *ngIf="student.assessmentStatus == 'paused'" (click)="toggleBottomSidebar()">Continue</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block"  *ngIf="student.assessmentStatus == 'na'" (click)="toggleBottomSidebar()">Start</button>
           </div>
         </td>
         <td>
-          {{ student.result }}
+          <div class="col-3 text-center pl-2 pr-2" *ngIf="student.result <=40 && student.result >=28">
+            <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #27A7AE; font-size: 12px;">{{ student.result }}</div>
+          </div>
+          <div class="col-3 text-center pl-2 pr-2" *ngIf="student.result <=27 && student.result >=20">
+            <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #E4CE7D; font-size: 12px;">{{ student.result }}</div>
+          </div>
+          <div class="col-3 text-center pl-2 pr-2" *ngIf="student.result <=19 && student.result >=0">
+            <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #F27B75; font-size: 12px;">{{ student.result }}</div>
+          </div>
+          <div class="col-3 text-center pl-2 pr-2" *ngIf="student.result === 'na'">
+            <div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #E5E5E5; font-size: 12px;">{{ student.result }}</div>
+          </div>
         </td>
         <td>
           pdf
@@ -730,7 +745,16 @@
                   <div style="font-size: 14px;"><a>Assessment summary</a></div>
                 </div>
                 <div class="col-3 my-auto pl-0 pr-1">
-                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc;">
+                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #27A7AE;" *ngIf="student.result <=40 && student.result >=28">
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{ student.result }}&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span>
+                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #E4CE7D;" *ngIf="student.result <=27 && student.result >=20">
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{ student.result }}&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span>
+                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #F27B75;" *ngIf="student.result <=19 && student.result >=0">
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{ student.result }}&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span>
+                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #E5E5E5;" *ngIf="student.result === 'na'">
                     &nbsp;&nbsp;&nbsp;&nbsp;{{ student.result }}&nbsp;&nbsp;&nbsp;&nbsp;
                   </span>
                 </div>
@@ -740,7 +764,7 @@
             <div class="col-3 my-auto pl-1 pr-0">
               <!-- <div class="align-middle" style="width: 100%; text-align: center; border: 1px solid #ccc; border-radius: 24px;">{{ student.result }}</div> -->
               <!-- <button type="button" class="btn btn-outline-secondary btn-sm mr-3">PDF</button> -->
-              <button type="button" class="btn btn-primary btn-sm btn-block"  *ngIf="student.assessmentStatus == 'lodged'" (click)="toggleBottomSidebar()">Lodged</button>
+              <button type="button" class="btn btn-light btn-sm btn-block" style="border: 1px solid #ccc;"  *ngIf="student.assessmentStatus == 'lodged'" [disabled]="student.assessmentStatus == 'lodged'">Lodged</button>
               <button type="button" class="btn btn-primary btn-sm btn-block"  *ngIf="student.assessmentStatus == 'assessed'" (click)="toggleBottomSidebar()">Continue</button>
               <button type="button" class="btn btn-primary btn-sm btn-block"  *ngIf="student.assessmentStatus == 'paused'" (click)="toggleBottomSidebar()">Continue</button>
               <button type="button" class="btn btn-primary btn-sm btn-block"  *ngIf="student.assessmentStatus == 'na'" (click)="toggleBottomSidebar()">Start</button>
