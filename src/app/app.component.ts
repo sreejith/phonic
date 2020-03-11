@@ -254,6 +254,7 @@ const STUDENTS: Student[] = [
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  
   title = 'phonic';
   countries = COUNTRIES;
   students = STUDENTS;
@@ -262,13 +263,17 @@ export class AppComponent {
 
   opened = false;
   bottomMenuOpened = false;
+  filterMenuOpened = false;
 
   questionListStart = 0;
   questionListEnd = 4;
 
   menuMode = 'over';
+
   menuPosition = 'right';
   menuBottomPosition = 'bottom';
+  menuFilterPosition = 'right';
+
   menuShowBackdrop = true;
   menuCloseOnClickOutside = true;
   menuCloseOnClickBackdrop = true;
@@ -284,6 +289,10 @@ export class AppComponent {
 
   toggleBottomSidebar() {
     this.bottomMenuOpened = !this.bottomMenuOpened;
+  }
+
+  toggleFilterSidebar() {
+    this.filterMenuOpened = !this.filterMenuOpened;
   }
 
   filterResults(event, from, to) {

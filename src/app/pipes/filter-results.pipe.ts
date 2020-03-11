@@ -7,7 +7,7 @@ export class FilterResultsPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
     let filteredArry: any[] = [];
-    console.log(args[0][0]);
+    // console.log(args[0][0]);
     switch (args[0][0]) {
       case 'na':
           for (const student of value) { // Typescript Example of::  for..of Loop
