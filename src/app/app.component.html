@@ -366,7 +366,7 @@
       <hr>
       <h6 class="card-title" (click)="filterResults($event, 27, 20); toggleFilterSidebar();"><div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #E4CE7D; font-size: 12px;">27-20</div>&nbsp;&nbsp;Carefully monitor</h6>
       <hr>
-      <h6 class="card-title" (click)="filterResults($event, 19, 0); toggleFilterSidebar();"><div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #F27B75; font-size: 12px;">&nbsp;19-0&nbsp;</div>&nbsp;&nbsp;Further support required</h6>
+      <h6 class="card-title" (click)="filterResults($event, 19, 0); toggleFilterSidebar();"><div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #F27B75; font-size: 12px;">&nbsp;19-0&nbsp;</div>&nbsp;&nbsp;Support required</h6>
       <hr>
       <h6 class="card-title" (click)="filterResults($event, 'na', 'na'); toggleFilterSidebar();"><div class="badge badge-primary badge-pill p-2" style="color: #151515; background-color: #E5E5E5; font-size: 12px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</div>&nbsp;&nbsp;Not assessed</h6>
       <hr>
@@ -599,7 +599,7 @@
     </a>
     <a class="result-menu text-center pl-2 pr-2 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 19, 0)">
       <div class="badge badge-primary badge-pill p-2 mr-2" style="color: #151515; background-color: #F27B75; font-size: 12px;">&nbsp;&nbsp;&nbsp;19-0&nbsp;&nbsp;&nbsp;</div>
-      Further support required
+      Support required
     </a>
     <a class="result-menu text-center pl-1 pr-1 mr-3 mt-1" style="height: 38px; cursor: pointer;" (click)="filterResults($event, 'na', 'na')">
       <div class="badge badge-primary badge-pill p-2 mr-2" style="color: #151515; background-color: #E5E5E5; font-size: 12px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</div>
@@ -618,6 +618,7 @@
 
 <div class="content mb-0 mt-2" role="main">
   <div style="width: 100%;" class="d-block d-sm-none">
+    <span class="mt-2" style="display: inline-block;" *ngIf="showFilteredByText">Filtered by: <strong>{{filteredBy}}</strong> </span>
     <button class="btn btn-sm btn-outline-primary shadow-sm pull-right" (click)="toggleFilterSidebar()"><i class="fa fa-filter fa-2" aria-hidden="true"></i>&nbsp;&nbsp;Filter by:</button>
   </div>
 
@@ -843,18 +844,18 @@
                   <div style="font-size: 14px;"><a>Assessment summary</a></div>
                 </div>
                 <div class="col-3 my-auto pl-0 pr-1 text-center">
-                  &nbsp;&nbsp;&nbsp;Result
-                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #27A7AE;" *ngIf="student.result <=40 && student.result >=28">
-                    &nbsp;&nbsp;&nbsp;&nbsp;{{ student.result }}&nbsp;&nbsp;&nbsp;&nbsp;
+                  Result
+                  <span class="badge badge-pill " style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #27A7AE; height: 40px; width: 40px; padding-top: 13px;" *ngIf="student.result <=40 && student.result >=28">
+                    {{ student.result }}
                   </span>
-                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #E4CE7D;" *ngIf="student.result <=27 && student.result >=20">
-                    &nbsp;&nbsp;&nbsp;&nbsp;{{ student.result }}&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class="badge badge-pill " style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #E4CE7D; height: 40px; width: 40px; padding-top: 13px;" *ngIf="student.result <=27 && student.result >=20">
+                    {{ student.result }}
                   </span>
-                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #F27B75;" *ngIf="student.result <=19 && student.result >=0">
-                    &nbsp;&nbsp;&nbsp;&nbsp;{{ student.result }}&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class="badge badge-pill " style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #F27B75; height: 40px; width: 40px; padding-top: 13px;" *ngIf="student.result <=19 && student.result >=0">
+                    {{ student.result }}
                   </span>
-                  <span class="badge badge-pill p-1 pull-right" style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #E5E5E5;" *ngIf="student.result === 'na'">
-                    &nbsp;&nbsp;&nbsp;&nbsp;{{ student.result }}&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class="badge badge-pill " style="color: #151515; font-size: 12px; border: 1px solid #ccc; background-color: #E5E5E5; height: 40px; width: 40px; padding-top: 13px;" *ngIf="student.result === 'na'">
+                    {{ student.result }}
                   </span>
                 </div>
               </div>
@@ -889,20 +890,20 @@
             </div> -->
 
             <div class="col-12 pl-1 pr-0" *ngIf="student.result <=40 && student.result >=28" style=" color: #151515; font-size: 12px;">
-              Result (40-28)
-              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 15px; background-color: #27A7AE; font-size: 12px; margin-top: 2px;">On track</span>
+              <!-- Result (40-28) -->
+              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #27A7AE; font-size: 12px; margin-top: 2px;">40-28</span> On track
             </div>
             <div class="col-12 pl-1 pr-0" *ngIf="student.result <=27 && student.result >=20" style=" color: #151515; font-size: 12px;">
-              Result (27-20)
-              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 15px; background-color: #E4CE7D; font-size: 12px; margin-top: 2px;">Carefully monitor</span>
+              <!-- (27-20) -->
+              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #E4CE7D; font-size: 12px; margin-top: 2px;">27-20</span> Carefully monitor
             </div>
             <div class="col-12 pl-1 pr-0" *ngIf="student.result <=19 && student.result >=0" style="color: #151515; font-size: 12px;">
-              Result (19-0)
-              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 15px; background-color: #F27B75; font-size: 12px; margin-top: 2px;">Further support required</span>
+              <!-- Result (19-0) -->
+              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #F27B75; font-size: 12px; margin-top: 2px;">19-0</span> Support required
             </div>
             <div class="col-12 pl-1 pr-0" *ngIf="student.result === 'na'"  style="color: #151515; font-size: 12px;">
-              Result (na)
-              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 15px; background-color: #E5E5E5; font-size: 12px; margin-top: 2px;">Not assessed</span>
+              <!-- Result (na) -->
+              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #E5E5E5; font-size: 12px; margin-top: 2px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</span> Not assessed
             </div>
 
           </div>

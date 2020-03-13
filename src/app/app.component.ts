@@ -326,37 +326,37 @@ export class AppComponent {
     switch (from) {
       case 'na':
         this.resultFilter = ['na', 'na'];
-        this.filteredBy = 'not assessed students';
+        this.filteredBy = 'Not assessed';
         this.showFilteredByText = true;
         break;
       case 40:
         this.resultFilter = [40, 28];
-        this.filteredBy = 'on track students';
+        this.filteredBy = 'On track';
         this.showFilteredByText = true;
         break;
       case 27:
         this.resultFilter = [27, 20];
-        this.filteredBy = 'mild concerned students';
+        this.filteredBy = 'Carefully monitor';
         this.showFilteredByText = true;
         break;
       case 19:
         this.resultFilter = [19, 0];
-        this.filteredBy = 'critical concerned students';
+        this.filteredBy = 'Support required';
         this.showFilteredByText = true;
         break;
       case 'assessed':
         this.resultFilter = ['assessed', 'assessed'];
-        this.filteredBy = 'assessment paused or unlodged students';
+        this.filteredBy = 'Continue assessment';
         this.showFilteredByText = true;
         break;
       case 'paused':
         this.resultFilter = ['paused', 'paused'];
-        this.filteredBy = 'assessment paused or unlodged students';
+        this.filteredBy = 'Continue assessment';
         this.showFilteredByText = true;
         break;
       case 'lodged':
         this.resultFilter = ['lodged', 'lodged'];
-        this.filteredBy = 'lodged students';
+        this.filteredBy = 'Lodged assessment';
         this.showFilteredByText = true;
         break;
       default:
