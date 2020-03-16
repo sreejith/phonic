@@ -933,19 +933,23 @@
 
             <div class="col-12 pl-1 pr-0" *ngIf="student.result <=40 && student.result >=28" style=" color: #151515; font-size: 12px;">
               <!-- Result (40-28) -->
-              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #27A7AE; font-size: 12px; margin-top: 2px;">40-28</span> On track
+              <!-- <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #27A7AE; font-size: 12px; margin-top: 2px;">40-28</span> On track -->
+              <span class="pull-right mr-2">On track</span>
             </div>
             <div class="col-12 pl-1 pr-0" *ngIf="student.result <=27 && student.result >=20" style=" color: #151515; font-size: 12px;">
               <!-- (27-20) -->
-              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #E4CE7D; font-size: 12px; margin-top: 2px;">27-20</span> Carefully monitor
+              <!-- <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #E4CE7D; font-size: 12px; margin-top: 2px;">27-20</span> Carefully monitor -->
+              <span class="pull-right mr-2">Carefully monitor</span>
             </div>
             <div class="col-12 pl-1 pr-0" *ngIf="student.result <=19 && student.result >=0" style="color: #151515; font-size: 12px;">
               <!-- Result (19-0) -->
-              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #F27B75; font-size: 12px; margin-top: 2px;">19-0</span> Support required
+              <!-- <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #F27B75; font-size: 12px; margin-top: 2px;">19-0</span> Support required -->
+              <span class="pull-right mr-2">Support required</span>
             </div>
             <div class="col-12 pl-1 pr-0" *ngIf="student.result === 'na'"  style="color: #151515; font-size: 12px;">
               <!-- Result (na) -->
-              <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #E5E5E5; font-size: 12px; margin-top: 2px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</span> Not assessed
+              <!-- <span class="badge badge-pill p-1 pl-3 pr-3" style="margin-right: 4px; background-color: #E5E5E5; font-size: 12px; margin-top: 2px;">&nbsp;&nbsp;&nbsp;na&nbsp;&nbsp;&nbsp;</span> Not assessed -->
+              <span class="pull-right mr-2">Not assessed</span>
             </div>
 
           </div>
