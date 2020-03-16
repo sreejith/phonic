@@ -254,7 +254,7 @@ const STUDENTS: Student[] = [
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+
   title = 'phonic';
   countries = COUNTRIES;
   students = STUDENTS;
@@ -362,6 +362,8 @@ export class AppComponent {
       default:
         this.resultFilter = ['all', 'all'];
         this.showFilteredByText = false;
+        // this.filteredBy = 'All students';
+        // this.showFilteredByText = true;
         break;
     }
 

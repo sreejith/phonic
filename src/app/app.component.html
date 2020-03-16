@@ -429,10 +429,10 @@
         <div class="toolbar d-block d-sm-none" role="banner" style="height: auto;">
           <div class="spacer"></div>
           <div class="btn-group btn-block" role="group" aria-label="Button group with nested dropdown">
-            <button type="button" class="btn btn-primary  ">Lodge</button>
-            <button type="button" class="btn btn-primary  ">Review</button>
-            <button type="button" class="btn btn-primary  ">Mark remaining as...</button>
-            <button type="button" class="btn btn-primary  ">Save</button>
+            <button type="button" class="btn btn-primary  " style="font-size: 12px;">Lodge</button>
+            <button type="button" class="btn btn-primary  " style="font-size: 12px;">Review</button>
+            <button type="button" class="btn btn-primary  " style="font-size: 12px;">Mark remaining as...</button>
+            <button type="button" class="btn btn-primary  " style="font-size: 12px;">Save</button>
           </div>
         </div>
         <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -461,9 +461,12 @@
             </ul>
           </div>
         </nav> -->
-        <div><p><ngb-progressbar type="success" [value]="25">10/40 completed</ngb-progressbar></p></div>
-        <div class="content mb-0">
-          <div style="height: calc(100vh - 250px);width: 100%; overflow: auto; padding: 5px;">
+        <div class="d-block d-sm-none">
+          <p><ngb-progressbar type="success" [value]="25" height=".5rem"></ngb-progressbar></p>
+          <div style="width: 100%; display: inline-block;"><span class="pull-right mr-3" style="font-size: 12px;">10/40 completed. 2 questions skipped.</span></div>
+        </div>
+        <div class="content my-0">
+          <div class="d-none d-md-block d-sm-block" style="height: calc(100vh - 250px);width: 100%; overflow: auto; padding: 5px;">
             <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 10px; padding: 10px; border-radius: .25rem; padding-bottom: 0px;">
               <div class="row">
                 <div class="col-7">
@@ -485,6 +488,41 @@
                 </div>
               </div>
             </div>
+          </div>
+          <!-- For Small devices -->
+          <div class="d-block d-sm-none" style="width: 100%;">
+
+            <div class="card mt-0" *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 15px; padding: 0px; border-radius: .25rem; display: inline-block;">
+              <div class="card-body p-0">
+                <div class="row m-0">
+                  <div class="col-6 pr-0 my-auto">
+                    {{ question.questionNumber }} . <span class="card-title1" style="font-size: 32px; margin-bottom: 16px;">{{ question.question }}</span>
+                  </div>
+                  <div class="col-6 pl-0">
+                    <div style="width: 100%;">Comment <i class="fa fa-pencil-square-o fa-1 pull-right mt-1"></i></div>
+                    <div style="border: 1px solid #ccc; border-radius: 2px; margin-bottom: 5px; height: 44px; padding: 5px;">
+                      Well
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer p-0">
+                <div class="btn-group" data-toggle="buttons" style="width: 100%;">
+                  <label class="btn btn-sm m-0" [class.btn-primary]="s" [class.btn-outline-secondary]="!s" style="border-radius: 0px; border: none; font-size: 18px;">
+                    <input type="radio" name="options" id="option1"  [value]="true"> Correct
+                  </label>
+                  <label class="btn btn-sm m-0" [class.btn-primary]="!s" [class.btn-outline-secondary]="s" style="border-radius: 0px; border: none; font-size: 18px;">
+                    <input type="radio" name="options" id="option2"  [value]="false"> Incorrect
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="card-footer d-block d-sm-none pt-0 pb-1 pl-3 pr-3" style="position: fixed; bottom: 0px; width: 100%; background-color: #fff; border-top: none;">
+            <button type="button" class="btn btn-outline-primary pull-left">Next</button>
+            <button type="button" class="btn btn-outline-primary pull-right"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-primary pull-right mr-2"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
           </div>
         </div>
     </ng-sidebar>
