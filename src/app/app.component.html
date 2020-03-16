@@ -492,7 +492,7 @@
           <!-- For Small devices -->
           <div class="d-block d-sm-none" style="width: 100%;">
 
-            <div class="card mt-0" *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 15px; padding: 0px; border-radius: .25rem; display: inline-block;">
+            <div class="card mt-0 small-device" *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 10px; padding: 0px; border-radius: .25rem; display: inline-block;">
               <div class="card-body p-0">
                 <div class="row m-0">
                   <div class="col-6 pr-0 my-auto">
@@ -519,10 +519,14 @@
             </div>
 
           </div>
-          <div class="card-footer d-block d-sm-none pt-0 pb-1 pl-3 pr-3" style="position: fixed; bottom: 0px; width: 100%; background-color: #fff; border-top: none;">
-            <button type="button" class="btn btn-outline-primary pull-left">Next</button>
-            <button type="button" class="btn btn-outline-primary pull-right"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-outline-primary pull-right mr-2"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+          <div class="card-footer d-block d-sm-none py-0 pl-0 pr-0" style=" width: 100%; background-color: #fff; border-top: none;">
+            <button type="button" class="btn btn-outline-primary pull-left" style="width: 115px; height: 50px;">Next</button>
+            <div class="pull-right bg-light" style="padding: 5px 5px; border: 1px solid #ccc;">
+              <button type="button" class="btn btn-outline-primary mr-2"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+              Q1 - Q4
+              <button type="button" class="btn btn-outline-primary ml-2"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            </div>
+
           </div>
         </div>
     </ng-sidebar>
