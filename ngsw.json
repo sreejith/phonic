@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1584510117587,
+  "timestamp": 1584681275210,
   "index": "https://sreejith.github.io/phonic/index.html",
   "assetGroups": [
     {
@@ -10,7 +10,7 @@
       "urls": [
         "https://sreejith.github.io/phonic/favicon.ico",
         "https://sreejith.github.io/phonic/index.html",
-        "https://sreejith.github.io/phonic/main.3e055d629cd57681bc15.js",
+        "https://sreejith.github.io/phonic/main.b7af42da31af6fdb62ce.js",
         "https://sreejith.github.io/phonic/manifest.webmanifest",
         "https://sreejith.github.io/phonic/polyfills-es5.1ee3ca2dbe8f2a7069bb.js",
         "https://sreejith.github.io/phonic/polyfills.27cb71b6e02b7924e158.js",
@@ -47,6 +47,7 @@
         "https://sreejith.github.io/phonic/assets/icons/safari-pinned-tab.svg",
         "https://sreejith.github.io/phonic/assets/images/DoE_Logo_K_RGB.png",
         "https://sreejith.github.io/phonic/assets/images/DoE_Logo_K_RGB.svg",
+        "https://sreejith.github.io/phonic/assets/js/web-animations.min.js",
         "https://sreejith.github.io/phonic/fontawesome-webfont.674f50d287a8c48dc19b.eot",
         "https://sreejith.github.io/phonic/fontawesome-webfont.912ec66d7572ff821749.svg",
         "https://sreejith.github.io/phonic/fontawesome-webfont.af7ae505a9eed503f8b8.woff2",
@@ -81,14 +82,15 @@
     "https://sreejith.github.io/phonic/assets/icons/safari-pinned-tab.svg": "906f6a05452a05e1f3ca2c668cf5770253f118bc",
     "https://sreejith.github.io/phonic/assets/images/DoE_Logo_K_RGB.png": "b30574c087ba669076fc7e66e6e4cf7fd05c323a",
     "https://sreejith.github.io/phonic/assets/images/DoE_Logo_K_RGB.svg": "4a33009526a6ffaf4becb8ae6a6bd361fc8770ad",
+    "https://sreejith.github.io/phonic/assets/js/web-animations.min.js": "5fee80000ba8b0d600cacc390ca30b6da14adf51",
     "https://sreejith.github.io/phonic/favicon.ico": "5bebd76e8fe97a22434ee47c99ac79d606707451",
     "https://sreejith.github.io/phonic/fontawesome-webfont.674f50d287a8c48dc19b.eot": "d980c2ce873dc43af460d4d572d441304499f400",
     "https://sreejith.github.io/phonic/fontawesome-webfont.912ec66d7572ff821749.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
     "https://sreejith.github.io/phonic/fontawesome-webfont.af7ae505a9eed503f8b8.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
     "https://sreejith.github.io/phonic/fontawesome-webfont.b06871f281fee6b241d6.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
     "https://sreejith.github.io/phonic/fontawesome-webfont.fee66e712a8a08eef580.woff": "28b782240b3e76db824e12c02754a9731a167527",
-    "https://sreejith.github.io/phonic/index.html": "49713b3cfc2111f4813ba3fde38b55be617823e9",
-    "https://sreejith.github.io/phonic/main.3e055d629cd57681bc15.js": "4178d7ae8c2907fa3ee6f16e4b5e2f1ebebb599a",
+    "https://sreejith.github.io/phonic/index.html": "d99485a330983667ada1d40112e65be04adf34fe",
+    "https://sreejith.github.io/phonic/main.b7af42da31af6fdb62ce.js": "73302c88398da0ab8afc77bd447507ea89540ad8",
     "https://sreejith.github.io/phonic/manifest.webmanifest": "c757790d993a7ba5b16cf41ebdf3b2db4c9a5715",
     "https://sreejith.github.io/phonic/polyfills-es5.1ee3ca2dbe8f2a7069bb.js": "358d121f2c73528ddd6abc912598525e9a69de6b",
     "https://sreejith.github.io/phonic/polyfills.27cb71b6e02b7924e158.js": "935cd07207812428056613f1300d15a61e0220e4",
