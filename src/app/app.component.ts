@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit , ChangeDetectorRef } from '@angular/core';
+import { trigger, state, style, group, animate, transition } from '@angular/animations';
 
 interface Country {
   name: string;
@@ -948,14 +949,107 @@ const STUDENTS: Student[] = [
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  // animations: [
+  //   trigger('itemState', [
+  //     transition(':enter', [
+  //       style({transform: 'translateY(-100%)'}),
+  //       animate(350)
+  //     ]),
+  //     transition(':leave', [
+  //       group([
+  //         animate('0.2s ease', style({
+  //           transform: 'translate(150px,25px)'
+  //         })),
+  //         animate('0.5s 0.2s ease', style({
+  //           opacity: 0
+  //         }))
+  //       ])
+  //     ])
+  //   ])
+  // ]
+  animations: [
+    trigger('itemState', [
+        // state('up', style({ 'overflow-y': 'hidden', 'overflow-x': 'hidden' })),
+        // state('down', style({ 'overflow-y': 'hidden', 'overflow-x': 'hidden' })),
+        transition('void => down', [
+          // animate('2000ms ease-in', style({transform: 'translateY(100%)'}))
+          /*style({
+            left: -100,
+            opacity: 0.0,
+            zIndex: 2
+          }),
+          animate('2000ms ease-in', style({
+            left: 0,
+            opacity: 1.0,
+            zIndex: 2
+          }))*/
+          // style({transform: 'translateY(-100%)'}),
+          animate('500ms ease-in', style({transform: 'translateY(100%)', zIndex: 2}))
+        ]),
+        transition('down => void', [
+            // style({transform: 'translateY(-100%)'}),
+            // style({display: 'hidden'}),
+            // animate('100ms ease-out')
+            // animate('2000ms ease-in', style({transform: 'translateY(100%)'}))
+            // animate('2000ms ease-in', style({transform: 'translateY(-100%)'}))
+            /*animate('2000ms ease-in', style({
+              left: 100,
+              opacity: 0.0,
+              // zIndex: 2
+            }))*/
+            style({
+              opacity: 0.0,
+              zIndex: 2
+            }),
+            animate('500ms ease-in', style({transform: 'translateY(100%)'}))
+        ]),
+        transition('void => up', [
+            // animate('2000ms ease-in', style({transform: 'translateY(-100%)'}))
+            /*style({
+              left: 100,
+              opacity: 0.0,
+              zIndex: 2
+            }),
+            animate('2000ms ease-in', style({
+              left: 0,
+              opacity: 1.0,
+              zIndex: 2
+            }))*/
+            // style({transform: 'translateY(100%)', zIndex: 2}),
+            // style({
+            //   opacity: 0.0,
+            //   zIndex: 2
+            // }),
+            animate('500ms ease-in', style({transform: 'translateY(-100%)', zIndex: 2}))
+        ]),
+        transition('up => void', [
+            // style({transform: 'translateY(100%)'}),
+            // style({display: 'hidden'}),
+            // animate('100ms ease-out')
+            // animate('2000ms ease-in', style({transform: 'translateY(-100%)'}))
+            // animate('2000ms ease-in', style({transform: 'translateY(100%)'}))
+            /*animate('2000ms ease-in', style({
+              left: -100,
+              opacity: 0.0,
+              // zIndex: 2
+            }))*/
+            style({
+              opacity: 0.0,
+              zIndex: 2
+            }),
+            animate('500ms ease-in', style({transform: 'translateY(-100%)'}))
+        ])
+    ])
+  ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'phonic';
   countries = COUNTRIES;
   students = STUDENTS;
-  questions = QUESTIONS;
+  // questions = QUESTIONS;
+  questions = [];
   s = false;
 
   opened = false;
@@ -963,7 +1057,7 @@ export class AppComponent {
   filterMenuOpened = false;
 
   questionListStart = 0;
-  questionListEnd = 4;
+  questionListEnd = 1;
 
   menuMode = 'over';
 
@@ -980,11 +1074,31 @@ export class AppComponent {
   filteredBy = '';
   showFilteredByText = false;
 
+  paginationState = '';
+
+  // changeDetectorRef = ChangeDetectorRef;
+
+  ngOnInit() {
+    const newArray = [];
+    while (QUESTIONS.length > 0) {
+      newArray.push(QUESTIONS.splice(0, 4));
+    }
+    // console.log(newArray);
+    this.questions = newArray;
+  }
+
+  constructor(private cdr: ChangeDetectorRef) {
+  }
+
+
   toggleSidebar() {
     this.opened = !this.opened;
   }
 
   toggleBottomSidebar() {
+    this.questionListStart = 0;
+    this.questionListEnd = 1;
+
     this.bottomMenuOpened = !this.bottomMenuOpened;
   }
 
@@ -1067,19 +1181,33 @@ export class AppComponent {
   }
 
   nextQuestionSet() {
-    if (this.questionListEnd >= 40) {
+    if (this.questionListEnd >= 10) {
       return false;
     }
-    this.questionListStart = this.questionListStart + 4;
-    this.questionListEnd = this.questionListEnd + 4;
+    // this.questionListStart = this.questionListStart + 1;
+    // this.questionListEnd = this.questionListEnd + 1;
+    this.paginationState = 'up';
+    this.cdr.detectChanges();
+    this.questionListStart++;
+    this.questionListEnd++;
   }
   previousQuestionSet() {
-    if (this.questionListEnd < 0 || this.questionListEnd === 4 ) {
+    // if (this.questionListEnd < 0 || this.questionListEnd === 0 ) {
+    //   return false;
+    // } else {
+    //   this.questionListStart = this.questionListStart - 1;
+    //   this.questionListEnd = this.questionListEnd - 1;
+    //   this.paginationState = 'down';
+    // }
+    // this.questionListStart = this.questionListStart - 1;
+    // this.questionListEnd = this.questionListEnd - 1;
+    if (this.questionListStart <= 0) {
       return false;
-    } else {
-      this.questionListStart = this.questionListStart - 4;
-      this.questionListEnd = this.questionListEnd - 4;
     }
+    this.paginationState = 'down';
+    this.cdr.detectChanges();
+    this.questionListStart--;
+    this.questionListEnd--;
   }
 
 }

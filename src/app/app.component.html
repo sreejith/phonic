@@ -466,99 +466,104 @@
           <div style="width: 100%; display: inline-block;"><span class="pull-right mr-3" style="font-size: 12px;">10/40 completed. 2 questions skipped.</span></div>
         </div>
         <div class="content my-0">
-          <div class="d-none d-md-block d-sm-block mt-3" style="height: calc(100vh - 95px);width: 100%; overflow: auto; padding: 5px;">
+          <div class="d-none d-md-block d-sm-block mt-3" style="height: calc(100vh - 152px);width: 100%; overflow: hidden; padding: 5px;">
             <!-- questionListStart :: {{questionListStart}} ||| questionListEnd :: {{questionListEnd}} -->
-            <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" class="assessment-card-large-devices">
-              <div class="row">
-                <div class="col-6">
-                {{ question.name }} . <span class="card-title1" style="font-size: 38px; margin-bottom: 16px;">{{ question.summary }}</span>
-                  <!-- <div class="btn-group1 mt-2" data-toggle="buttons">
-                    <label class="btn btn-sm mr-3" [class.btn-primary]="s" [class.btn-outline-secondary]="!s">
-                      <input type="radio" name="options" id="option1"  [value]="true"> correct
-                    </label>
-                    <label class="btn btn-sm" [class.btn-primary]="!s" [class.btn-outline-secondary]="s">
-                      <input type="radio" name="options" id="option2"  [value]="false"> incorrect
-                    </label>
-                  </div> -->
-                  <form class="mt-2">
-                    <!-- <div class="btn-group btn-group-toggle">
-                      <label class="btn" [class.btn-primary]="s" ngbButtonLabel>
-                        <input type="checkbox" formControlName="left" ngbButton> Correct
+            <!-- <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i"></div> -->
+            <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" [@itemState]="paginationState">
+              <div *ngFor="let question of question" class="assessment-card-large-devices" >
+                <div class="row">
+                  <div class="col-6">
+                  {{ question.name }} . <span class="card-title1" style="font-size: 38px; margin-bottom: 16px;">{{ question.summary }}</span>
+                    <!-- <div class="btn-group1 mt-2" data-toggle="buttons">
+                      <label class="btn btn-sm mr-3" [class.btn-primary]="s" [class.btn-outline-secondary]="!s">
+                        <input type="radio" name="options" id="option1"  [value]="true"> correct
                       </label>
-                      <label class="btn" [class.btn-primary]="!s" ngbButtonLabel>
-                        <input type="checkbox" formControlName="right" ngbButton> Incorrect
+                      <label class="btn btn-sm" [class.btn-primary]="!s" [class.btn-outline-secondary]="s">
+                        <input type="radio" name="options" id="option2"  [value]="false"> incorrect
                       </label>
                     </div> -->
-                    <label class="btn btn-outline-primary1 mr-3"  style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);">
-                      <input type="radio" name="options" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px;"  [value]="s" > Correct 
-                    </label>
-                    <label class="btn btn-outline-primary1 btn-primary" style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);">
-                      <input type="radio" name="options" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px;"  [value]="s"> Incorrect
-                    </label>
-                    <!-- <button type="button" class="btn btn-outline-primary mr-4" style="width: 150px; height: 50px;"> <span style="width: 50px; height:50px;"></span> Complete</button>
-                    <button type="button" class="btn btn-outline-primary" style="width: 150px; height: 50px;">Incomplete</button> -->
-                  </form>
-                </div>
-                <div class="col-6">
-                  <div class="form-group px-3 pb-3 pt-1 mb-0 mt-2" style="border-color: rgba(204, 204, 204, 1); background-color: rgba(229, 229, 229, 1);">
-                    <label class="mb-1" for="exampleFormControlTextarea1">Comments</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    <form class="mt-2">
+                      <!-- <div class="btn-group btn-group-toggle">
+                        <label class="btn" [class.btn-primary]="s" ngbButtonLabel>
+                          <input type="checkbox" formControlName="left" ngbButton> Correct
+                        </label>
+                        <label class="btn" [class.btn-primary]="!s" ngbButtonLabel>
+                          <input type="checkbox" formControlName="right" ngbButton> Incorrect
+                        </label>
+                      </div> -->
+                      <label class="btn btn-outline-primary1 mr-3"  style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);">
+                        <input type="radio" name="options" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px;"  [value]="s" > Correct 
+                      </label>
+                      <label class="btn btn-outline-primary1 btn-primary" style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);">
+                        <input type="radio" name="options" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px;"  [value]="s"> Incorrect
+                      </label>
+                      <!-- <button type="button" class="btn btn-outline-primary mr-4" style="width: 150px; height: 50px;"> <span style="width: 50px; height:50px;"></span> Complete</button>
+                      <button type="button" class="btn btn-outline-primary" style="width: 150px; height: 50px;">Incomplete</button> -->
+                    </form>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer py-0 pl-0 pr-0" style=" width: 100%; background-color: #fff; border-top: none;">
-              <button type="button" class="btn btn-outline-primary pull-left" style="width: 115px; height: 50px;" (click)="nextQuestionSet()">Next</button>
-              <div class="pull-right bg-light" style="padding: 5px 5px; border: 1px solid #ccc;">
-                <button type="button" class="btn btn-outline-primary mr-2"><i class="fa fa-chevron-up" aria-hidden="true" (click)="previousQuestionSet()"></i></button>
-                Q1 - Q4
-                <button type="button" class="btn btn-outline-primary ml-2"><i class="fa fa-chevron-down" aria-hidden="true" (click)="nextQuestionSet()"></i></button>
-              </div>
-
-            </div>
-          </div>
-          <!-- For Small devices -->
-          <div class="d-block d-sm-none" style="width: 100%;">
-            <!-- questionListStart :: {{questionListStart}} ||| questionListEnd :: {{questionListEnd}} -->
-            <div class="card mt-0 small-device" *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 10px; padding: 0px; border-radius: .25rem; display: inline-block;">
-              <div class="card-body p-0">
-                <div class="row m-0">
-                  <div class="col-6 pr-0 my-auto">
-                    {{ question.name }} . <span class="card-title1" style="font-size: 32px; margin-bottom: 16px;">{{ question.summary }}</span>
-                  </div>
-                  <div class="col-6 pl-0">
-                    <div style="width: 100%;">Comment <i class="fa fa-pencil-square-o fa-1 pull-right mt-1"></i></div>
-                    <div style="border: 1px solid #ccc; border-radius: 2px; margin-bottom: 5px; height: 44px; padding: 5px;">
-                      Well
+                  <div class="col-6">
+                    <div class="form-group px-3 pb-3 pt-1 mb-0 mt-2" style="border-color: rgba(204, 204, 204, 1); background-color: rgba(229, 229, 229, 1);">
+                      <label class="mb-1" for="exampleFormControlTextarea1">Comments</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="card-footer p-0">
-                <div class="btn-group" data-toggle="buttons" style="width: 100%;">
-                  <label class="btn btn-sm m-0" [class.btn-primary]="s" [class.btn-outline-secondary]="!s" style="border-radius: 0px; border: none; font-size: 18px;">
-                    <input type="radio" name="options" id="option1"  [value]="true"> Correct
-                  </label>
-                  <label class="btn btn-sm m-0" [class.btn-primary]="!s" [class.btn-outline-secondary]="s" style="border-radius: 0px; border: none; font-size: 18px;">
-                    <input type="radio" name="options" id="option2"  [value]="false"> Incorrect
-                  </label>
+            </div>
+          </div>
+          <div class="card-footer py-0 pl-0 pr-0 d-none d-md-block d-sm-block" style=" width: 100%; background-color: #fff; border-top: none;">
+            <button type="button" class="btn btn-outline-primary pull-left" style="width: 115px; height: 50px;" (click)="nextQuestionSet()">Next</button>
+            <div class="pull-right bg-light" style="padding: 5px 5px; border: 1px solid #ccc;">
+              <button type="button" class="btn btn-outline-primary mr-2" (click)="previousQuestionSet()"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+              Q1 - Q4
+              <button type="button" class="btn btn-outline-primary ml-2" (click)="nextQuestionSet()"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            </div>
+          </div>
+          <!-- For Small devices -->
+          <div class="d-block d-sm-none" style="width: 100%; height: calc(100vh - 180px);overflow: hidden;">
+            <!-- questionListStart :: {{questionListStart}} ||| questionListEnd :: {{questionListEnd}} -->
+            <!-- <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" [@itemState]="paginationState">
+              <div *ngFor="let question of question" class="assessment-card-large-devices" > -->
+            <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" [@itemState]="paginationState">
+              <div class="card mt-0 small-device" *ngFor="let question of question" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 6px; padding: 0px; border-radius: .25rem; display: inline-block;">
+                <div class="card-body p-0">
+                  <div class="row m-0">
+                    <div class="col-6 pr-0 my-auto">
+                      {{ question.name }} . <span class="card-title1" style="font-size: 32px; margin-bottom: 16px;">{{ question.summary }}</span>
+                    </div>
+                    <div class="col-6 pl-0">
+                      <div style="width: 100%;">Comment <i class="fa fa-pencil-square-o fa-1 pull-right mt-1"></i></div>
+                      <div style="border: 1px solid #ccc; border-radius: 2px; margin-bottom: 5px; height: 44px; padding: 5px;">
+                        Well
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- <form >
-                  <div class="btn-group btn-group-toggle">
-                    <label class="btn-primary" ngbButtonLabel>
-                      <input type="checkbox" formControlName="left" ngbButton> Left (pre-checked)
+                <div class="card-footer p-0">
+                  <div class="btn-group" data-toggle="buttons" style="width: 100%;">
+                    <label class="btn btn-sm m-0" [class.btn-primary]="s" [class.btn-outline-secondary]="!s" style="border-radius: 0px; border: none; font-size: 18px;">
+                      <input type="radio" name="options" id="option1"  [value]="true"> Correct
                     </label>
-                    <label class="btn-primary" ngbButtonLabel>
-                      <input type="checkbox" formControlName="middle" ngbButton> Middle
-                    </label>
-                    <label class="btn-primary" ngbButtonLabel>
-                      <input type="checkbox" formControlName="right" ngbButton> Right
+                    <label class="btn btn-sm m-0" [class.btn-primary]="!s" [class.btn-outline-secondary]="s" style="border-radius: 0px; border: none; font-size: 18px;">
+                      <input type="radio" name="options" id="option2"  [value]="false"> Incorrect
                     </label>
                   </div>
-                </form> -->
+                  <!-- <form >
+                    <div class="btn-group btn-group-toggle">
+                      <label class="btn-primary" ngbButtonLabel>
+                        <input type="checkbox" formControlName="left" ngbButton> Left (pre-checked)
+                      </label>
+                      <label class="btn-primary" ngbButtonLabel>
+                        <input type="checkbox" formControlName="middle" ngbButton> Middle
+                      </label>
+                      <label class="btn-primary" ngbButtonLabel>
+                        <input type="checkbox" formControlName="right" ngbButton> Right
+                      </label>
+                    </div>
+                  </form> -->
+                </div>
               </div>
             </div>
-
           </div>
           <div class="card-footer d-block d-sm-none py-0 pl-0 pr-0" style=" width: 100%; background-color: #fff; border-top: none;">
             <button type="button" class="btn btn-outline-primary pull-left" style="width: 115px; height: 50px;" (click)="nextQuestionSet()">Next</button>
