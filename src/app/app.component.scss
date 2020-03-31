@@ -107,7 +107,16 @@ thead, tbody tr {
   background-color: rgba(250, 250, 250, 1);
 }
 
+.progress-potrait {
+  display: none !important;
+}
+.progress-landscape {
+  display: inline-block !important;
+}
+
 /* ----------- iPad 1, 2, Mini and Air ----------- */
+
+/* Landscape */
 @media only screen
 and (min-device-width : 768px)
 and (max-device-width : 1024px)
@@ -116,16 +125,42 @@ and (-webkit-min-device-pixel-ratio: 1) {
   .assessment-card-large-devices {
     height: 140px;
   }
+  .progress-potrait {
+    display: none !important;
+  }
+  .progress-landscape {
+    display: inline-block !important;
+  }
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: portrait)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .progress-potrait {
+      display: block !important;
+    }
+    .progress-landscape {
+      display: none !important;
+    }
 }
 
 /* ----------- iPad 3, 4 and Pro 9.7" ----------- */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
-  and (orientation: landscape) 
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: landscape)
   and (-webkit-min-device-pixel-ratio: 2) {
     .assessment-card-large-devices {
       height: 140px;
+    }
+    .progress-potrait {
+      display: none !important;
+    }
+    .progress-landscape {
+      display: inline-block !important;
     }
 }
 
@@ -133,13 +168,19 @@ and (-webkit-min-device-pixel-ratio: 1) {
 /* Landscape */
 /* Declare the same value for min- and max-width to avoid colliding with desktops */
 /* Source: https://medium.com/connect-the-dots/css-media-queries-for-ipad-pro-8cad10e17106*/
-@media only screen 
-  and (min-device-width: 1112px) 
-  and (max-device-width: 1112px) 
-  and (orientation: landscape) 
+@media only screen
+  and (min-device-width: 1112px)
+  and (max-device-width: 1112px)
+  and (orientation: landscape)
   and (-webkit-min-device-pixel-ratio: 2) {
     .assessment-card-large-devices {
       height: 140px;
+    }
+    .progress-potrait {
+      display: none !important;
+    }
+    .progress-landscape {
+      display: inline-block !important;
     }
 }
 
@@ -147,12 +188,18 @@ and (-webkit-min-device-pixel-ratio: 1) {
 /* Landscape */
 /* Declare the same value for min- and max-width to avoid colliding with desktops */
 /* Source: https://medium.com/connect-the-dots/css-media-queries-for-ipad-pro-8cad10e17106*/
-@media only screen 
-  and (min-device-width: 1366px) 
-  and (max-device-width: 1366px) 
-  and (orientation: landscape) 
+@media only screen
+  and (min-device-width: 1366px)
+  and (max-device-width: 1366px)
+  and (orientation: landscape)
   and (-webkit-min-device-pixel-ratio: 2) {
     .assessment-card-large-devices {
       height: 140px;
+    }
+    .progress-potrait {
+      display: none !important;
+    }
+    .progress-landscape {
+      display: inline-block !important;
     }
 }

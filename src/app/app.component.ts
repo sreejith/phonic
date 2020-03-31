@@ -1,4 +1,5 @@
 import { Component, OnInit , ChangeDetectorRef } from '@angular/core';
+import * as _ from 'lodash';
 import { trigger, state, style, group, animate, transition } from '@angular/animations';
 
 interface Country {
@@ -186,6 +187,7 @@ interface AssessmentItems {
   name: string;
   summary: string;
   responses: ResponseText[];
+  [key: string]: any;
 }
 
 const QUESTIONS: AssessmentItems[] = [
@@ -945,6 +947,193 @@ const STUDENTS: Student[] = [
   }
 ];
 
+interface ResponseAssessmentItems {
+  assessmentItemId: number;
+  assessmentComment: string;
+  value: boolean;
+}
+
+interface Aspect {
+  assessmentItems: ResponseAssessmentItems[];
+}
+
+interface StudentResponse {
+  id: number;
+  studentId: number;
+  aspects: Aspect[];
+}
+
+const RESPONSES: StudentResponse = {
+	id: 4,
+	studentId: 235235,
+	aspects: [
+		{
+			assessmentItems: [
+				{
+				  assessmentItemId: 0,
+				  assessmentComment: 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.',
+				  value: null
+				}, {
+				  assessmentItemId: 1,
+				  assessmentComment: 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.',
+				  value: null
+				}, {
+				  assessmentItemId: 2,
+				  assessmentComment: 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',
+				  value: null
+				}, {
+				  assessmentItemId: 3,
+				  assessmentComment: 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',
+				  value: null
+				}, {
+				  assessmentItemId: 4,
+				  assessmentComment: 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.',
+				  value: null
+				}, {
+				  assessmentItemId: 5,
+				  assessmentComment: 'In congue. Etiam justo. Etiam pretium iaculis justo.',
+				  value: null
+				}, {
+				  assessmentItemId: 6,
+				  assessmentComment: 'Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.',
+				  value: null
+				}, {
+				  assessmentItemId: 7,
+				  assessmentComment: 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.',
+				  value: null
+				}, {
+				  assessmentItemId: 8,
+				  assessmentComment: 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.',
+				  value: null
+				}, {
+				  assessmentItemId: 9,
+				  assessmentComment: 'Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.',
+				  value: null
+				}, {
+				  assessmentItemId: 10,
+				  assessmentComment: 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.',
+				  value: null
+				}, {
+				  assessmentItemId: 11,
+				  assessmentComment: 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.',
+				  value: null
+				}, {
+				  assessmentItemId: 12,
+				  assessmentComment: 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.',
+				  value: null
+				}, {
+				  assessmentItemId: 13,
+				  assessmentComment: 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.',
+				  value: null
+				}, {
+				  assessmentItemId: 14,
+				  assessmentComment: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+				  value: null
+				}, {
+				  assessmentItemId: 15,
+				  assessmentComment: 'In congue. Etiam justo. Etiam pretium iaculis justo.',
+				  value: null
+				}, {
+				  assessmentItemId: 16,
+				  assessmentComment: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.',
+				  value: null
+				}, {
+				  assessmentItemId: 17,
+				  assessmentComment: 'Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.',
+				  value: null
+				}, {
+				  assessmentItemId: 18,
+				  assessmentComment: 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.',
+				  value: null
+				}, {
+				  assessmentItemId: 19,
+				  assessmentComment: 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.',
+				  value: null
+				}, {
+				  assessmentItemId: 20,
+				  assessmentComment: 'Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.',
+				  value: null
+				}, {
+				  assessmentItemId: 21,
+				  assessmentComment: 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.',
+				  value: null
+				}, {
+				  assessmentItemId: 22,
+				  assessmentComment: 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',
+				  value: null
+				}, {
+				  assessmentItemId: 23,
+				  assessmentComment: 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',
+				  value: null
+				}, {
+				  assessmentItemId: 24,
+				  assessmentComment: 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.',
+				  value: null
+				}, {
+				  assessmentItemId: 25,
+				  assessmentComment: 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.',
+				  value: null
+				}, {
+				  assessmentItemId: 26,
+				  assessmentComment: 'Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.',
+				  value: null
+				}, {
+				  assessmentItemId: 27,
+				  assessmentComment: 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.',
+				  value: null
+				}, {
+				  assessmentItemId: 28,
+				  assessmentComment: 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.',
+				  value: null
+				}, {
+				  assessmentItemId: 29,
+				  assessmentComment: 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.',
+				  value: null
+				}, {
+				  assessmentItemId: 30,
+				  assessmentComment: 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.',
+				  value: null
+				}, {
+				  assessmentItemId: 31,
+				  assessmentComment: 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.',
+				  value: null
+				}, {
+				  assessmentItemId: 32,
+				  assessmentComment: 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.',
+				  value: null
+				}, {
+				  assessmentItemId: 33,
+				  assessmentComment: 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.',
+				  value: null
+				}, {
+				  assessmentItemId: 34,
+				  assessmentComment: 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.',
+				  value: null
+				}, {
+				  assessmentItemId: 35,
+				  assessmentComment: 'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.',
+				  value: null
+				}, {
+				  assessmentItemId: 36,
+				  assessmentComment: 'Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.',
+				  value: null
+				}, {
+				  assessmentItemId: 37,
+				  assessmentComment: 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.',
+				  value: null
+				}, {
+				  assessmentItemId: 38,
+				  assessmentComment: 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.',
+				  value: null
+				}, {
+				  assessmentItemId: 39,
+				  assessmentComment: 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',
+				  value: null
+				}
+			]
+		}
+	]
+};
 
 @Component({
   selector: 'app-root',
@@ -970,76 +1159,37 @@ const STUDENTS: Student[] = [
   // ]
   animations: [
     trigger('itemState', [
-        // state('up', style({ 'overflow-y': 'hidden', 'overflow-x': 'hidden' })),
-        // state('down', style({ 'overflow-y': 'hidden', 'overflow-x': 'hidden' })),
+        // state('down', style({
+        //   opacity: '1', visibility: 'visible'
+        // })),
+        // state('up', style({
+        //   opacity: '1', visibility: 'visible'
+        // })),
+        /********************* */
         transition('void => down', [
-          // animate('2000ms ease-in', style({transform: 'translateY(100%)'}))
-          /*style({
-            left: -100,
-            opacity: 0.0,
-            zIndex: 2
-          }),
-          animate('2000ms ease-in', style({
-            left: 0,
-            opacity: 1.0,
-            zIndex: 2
-          }))*/
-          // style({transform: 'translateY(-100%)'}),
-          animate('500ms ease-in', style({transform: 'translateY(100%)', zIndex: 2}))
+          style({ transform: 'translateY(0)' }),
+          animate('1000ms ease-in-out', style({transform: 'translateY(100%)', zIndex: 2, opacity: '0', visibility: 'hidden'}))
         ]),
         transition('down => void', [
-            // style({transform: 'translateY(-100%)'}),
-            // style({display: 'hidden'}),
-            // animate('100ms ease-out')
-            // animate('2000ms ease-in', style({transform: 'translateY(100%)'}))
-            // animate('2000ms ease-in', style({transform: 'translateY(-100%)'}))
-            /*animate('2000ms ease-in', style({
-              left: 100,
-              opacity: 0.0,
-              // zIndex: 2
-            }))*/
-            style({
-              opacity: 0.0,
-              zIndex: 2
-            }),
-            animate('500ms ease-in', style({transform: 'translateY(100%)'}))
+          style({transform: 'translateY(0)', opacity: '1', visibility: 'visible'}),
+          animate('1000ms ease-in-out', style({transform: 'translateY(100%)', opacity: '1', visibility: 'visible'}))
+          // style({ transform: 'translateY(-100%)' }),
+          // animate('3000ms ease-in-out', style({ transform: 'translateY(0)' }))
         ]),
         transition('void => up', [
-            // animate('2000ms ease-in', style({transform: 'translateY(-100%)'}))
-            /*style({
-              left: 100,
-              opacity: 0.0,
-              zIndex: 2
-            }),
-            animate('2000ms ease-in', style({
-              left: 0,
-              opacity: 1.0,
-              zIndex: 2
-            }))*/
-            // style({transform: 'translateY(100%)', zIndex: 2}),
-            // style({
-            //   opacity: 0.0,
-            //   zIndex: 2
-            // }),
-            animate('500ms ease-in', style({transform: 'translateY(-100%)', zIndex: 2}))
+          animate('1000ms ease-in-out', style({transform: 'translateY(-100%)', zIndex: 2, opacity: '0', visibility: 'hidden'}))
         ]),
         transition('up => void', [
-            // style({transform: 'translateY(100%)'}),
-            // style({display: 'hidden'}),
-            // animate('100ms ease-out')
-            // animate('2000ms ease-in', style({transform: 'translateY(-100%)'}))
-            // animate('2000ms ease-in', style({transform: 'translateY(100%)'}))
-            /*animate('2000ms ease-in', style({
-              left: -100,
-              opacity: 0.0,
-              // zIndex: 2
-            }))*/
-            style({
-              opacity: 0.0,
-              zIndex: 2
-            }),
-            animate('500ms ease-in', style({transform: 'translateY(-100%)'}))
+          animate('1000ms ease-in-out', style({transform: 'translateY(-100%)', opacity: '1', visibility: 'visible'}))
         ])
+        /******************** */
+        // transition(':enter', [
+        //   style({transform: 'translateY(-100%)'}),
+        //   animate('200ms ease-in', style({transform: 'translateY(0%)'}))
+        // ]),
+        // transition(':leave', [
+        //   animate('200ms ease-in', style({transform: 'translateY(-100%)'}))
+        // ])
     ])
   ]
 })
@@ -1076,14 +1226,30 @@ export class AppComponent implements OnInit {
 
   paginationState = '';
 
+  answerPercentage: number;
+  selectedAnswers: any = {};
+
+  questionAttentedCount = 0;
+
+  progressArry = [];
+  skippedArray = [];
+  skippedCount = 0;
+  nextCount = 0;
+  isNextBtnVissible = false;
+
   // changeDetectorRef = ChangeDetectorRef;
 
   ngOnInit() {
     const newArray = [];
+    for (const question of QUESTIONS) { // Typescript Example of::  for..of Loop
+      question.assessmentComment = '';
+      question.value = null;
+      // console.log(question);
+    }
     while (QUESTIONS.length > 0) {
       newArray.push(QUESTIONS.splice(0, 4));
     }
-    // console.log(newArray);
+    console.log(newArray);
     this.questions = newArray;
   }
 
@@ -1190,6 +1356,10 @@ export class AppComponent implements OnInit {
     this.cdr.detectChanges();
     this.questionListStart++;
     this.questionListEnd++;
+
+    setTimeout( () => {
+      this.isNextBtnVissible = false;
+    }, 50);
   }
   previousQuestionSet() {
     // if (this.questionListEnd < 0 || this.questionListEnd === 0 ) {
@@ -1208,6 +1378,64 @@ export class AppComponent implements OnInit {
     this.cdr.detectChanges();
     this.questionListStart--;
     this.questionListEnd--;
+  }
+
+  selectAnswer(sequenceNo, coursId, value) {
+
+    if (_.find(this.progressArry, {id: coursId})) {
+      // Find item index using _.findIndex
+      const index = _.findIndex(this.progressArry, {id: coursId});
+
+      // Replace item at index using native splice
+      this.progressArry.splice(index, 1, {seqNo: sequenceNo, id: coursId, respose: value});
+    } else {
+      this.nextCount ++;
+      this.progressArry.push({seqNo: sequenceNo, id: coursId, respose: value});
+    }
+
+    if (this.nextCount === 4) {
+      this.isNextBtnVissible = true;
+      this.nextCount = 0;
+    }
+
+    this.progressArry = _.orderBy(this.progressArry, [ 'seqNo' ], [ 'asc' ]);
+
+    this.questionAttentedCount = this.progressArry.length;
+
+    const serialArry = _.toArray(this.progressArry.map(a => a.seqNo));
+
+    const n = Math.max.apply(null, serialArry);  // get the maximum
+
+    console.log('N:: ' + n);
+
+    // for (let i = 1 ; i < n ; i++) {
+    //   console.log(serialArry.indexOf(i));
+    //   if (serialArry.indexOf(i) < 0) {
+    //     this.skippedArray.push(i);
+    //   }
+    // }
+    let next = 0; // The next number in the sequence
+    // let missing = [];
+    this.skippedArray = [];
+    for (let i = 0; i < serialArry.length; i++) {
+      // While the expected element is less than
+      // the current element
+      while (next < serialArry[i]) {
+        // Add it to the missing list and
+        // increment to the next expected number
+        this.skippedArray.push(next);
+        next++;
+      }
+      next++;
+    }
+    console.log('Res:: ');
+    console.log(this.skippedArray);
+
+    this.skippedCount = this.skippedArray.length;
+
+    console.log(this.progressArry);
+    this.answerPercentage = (this.questionAttentedCount / 40) * 100;
+    console.log(this.answerPercentage);
   }
 
 }

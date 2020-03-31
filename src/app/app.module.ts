@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule,
+    FormsModule,
     SidebarModule.forRoot(),
     NgSelectModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

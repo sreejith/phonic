@@ -417,13 +417,39 @@
           <div class="spacer"></div>
           <button class="btn btn-primary btn-sm mr-2 d-block d-sm-none">Help</button>
           <button class="btn btn-primary btn-sm mr-2 d-block d-sm-none" (click)="toggleBottomSidebar()">Exit</button>
-          <div class="btn-group d-none d-md-block d-sm-block" role="group" aria-label="Button group with nested dropdown">
+          <!-- <div class="btn-group d-none d-md-block d-sm-block" role="group" aria-label="Button group with nested dropdown">
             <button type="button" class="btn btn-primary  ">Lodge</button>
             <button type="button" class="btn btn-primary  ">Review</button>
             <button type="button" class="btn btn-primary  ">Mark remaining as...</button>
             <button type="button" class="btn btn-primary  ">Help</button>
             <button type="button" class="btn btn-primary  " (click)="toggleBottomSidebar()">Exit</button>
+          </div> -->
+          <div class=" d-none d-md-block d-sm-block mr-3" style="padding-top: 10px; padding-bottom: 5px; padding-left: 10px; border-left: 1px solid #ccc; height:100%;">
+            <div class="mr-3 progress-landscape" style="display: inline-block; vertical-align: middle; width: 180px;">
+              <p><ngb-progressbar type="success" [value]="answerPercentage" height=".5rem"></ngb-progressbar></p>
+              <div style="font-size: small; font-weight: lighter;">{{questionAttentedCount}} out of 40 completed</div>
+              <div style="font-size: small; font-weight: lighter;" *ngIf="skippedCount>0">{{skippedCount}} skipped</div>
+            </div>
+            <button type="button" class="btn btn-primary mr-1 " style="height: 46px;">Lodge</button>
+            <button type="button" class="btn btn-primary mr-1 " style="height: 46px;">Review</button>
+            <button type="button" class="btn btn-primary mr-1 " style="height: 46px;">Mark remaining as...</button>
+            <button type="button" class="btn btn-link mr-1 " style="height: 46px;">Help</button>
+            <button type="button" class="btn btn-link  " style="height: 46px;" (click)="toggleBottomSidebar()">Exit</button>
+          <!-- <div class="d-none d-md-block d-sm-block mr-3">
+            <div style="display: inline-block;">
+              <div class="mr-3" style="display: inline-block; vertical-align: middle;">
+                <p><ngb-progressbar type="success" [value]="25" height=".5rem"></ngb-progressbar></p>
+                <div style="font-size: small; font-weight: lighter;">1 out of 40 completed</div>
+                <div style="font-size: small; font-weight: lighter;">1 skipped</div>
+              </div>
+              <button type="button" class="btn btn-primary mr-1 " style="height: 46px;">Lodge</button>
+              <button type="button" class="btn btn-primary mr-1 " style="height: 46px;">Review</button>
+              <button type="button" class="btn btn-primary mr-1 " style="height: 46px;">Mark remaining as...</button>
+              <button type="button" class="btn btn-link mr-1 " style="height: 46px;">Help</button>
+              <button type="button" class="btn btn-link  " style="height: 46px;" (click)="toggleBottomSidebar()">Exit</button>
+            </div> -->
           </div>
+
         </div>
         <!-- <div style="height: auto; width: 100%; display: inline-block; border-bottom: 1px solid #ccc;" class="d-block d-sm-none"> -->
         <div class="toolbar d-block d-sm-none" role="banner" style="height: auto;">
@@ -461,9 +487,13 @@
             </ul>
           </div>
         </nav> -->
+        <div class="d-none d-md-block d-sm-block progress-potrait">
+          <p><ngb-progressbar type="success" [value]="answerPercentage" height=".5rem"></ngb-progressbar></p>
+          <div style="width: 100%; display: inline-block;"><span class="pull-right mr-3" style="font-size: 12px;">{{questionAttentedCount}}/40 completed. 2 questions skipped.</span></div>
+        </div>
         <div class="d-block d-sm-none">
-          <p><ngb-progressbar type="success" [value]="25" height=".5rem"></ngb-progressbar></p>
-          <div style="width: 100%; display: inline-block;"><span class="pull-right mr-3" style="font-size: 12px;">10/40 completed. 2 questions skipped.</span></div>
+          <p><ngb-progressbar type="success" [value]="answerPercentage" height=".5rem"></ngb-progressbar></p>
+          <div style="width: 100%; display: inline-block;"><span class="pull-right mr-3" style="font-size: 12px;">{{questionAttentedCount}}/40 completed. 2 questions skipped.</span></div>
         </div>
         <div class="content my-0">
           <div class="d-none d-md-block d-sm-block mt-3" style="height: calc(100vh - 152px);width: 100%; overflow: hidden; padding: 5px;">
@@ -491,12 +521,21 @@
                           <input type="checkbox" formControlName="right" ngbButton> Incorrect
                         </label>
                       </div> -->
-                      <label class="btn btn-outline-primary1 mr-3"  style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);">
-                        <input type="radio" name="options" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px;"  [value]="s" > Correct 
+                      <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="question.value">
+                        <label ngbButtonLabel class="btn btn-primary1 mr-3" [class.btn-primary]="question.value === true" style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);border-radius: .25rem;">
+                          <input ngbButton type="radio" (change)="selectAnswer(question.seqNo, question.id, question.value)" [value]="true" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px; position: relative; clip: unset;"> Correct
+                        </label>
+                        <label ngbButtonLabel class="btn-primary1" [class.btn-primary]="question.value === 'false'" style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);border-radius: .25rem;">
+                          <input ngbButton type="radio" (change)="selectAnswer(question.seqNo, question.id, question.value)" value="false" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px; position: relative; clip: unset;"> Incorrect
+                        </label>
+                      </div>
+                      <!-- below is good -->
+                      <!-- <label class="btn btn-outline-primary1 mr-3"  [class.btn-primary]="question.value" style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);">
+                        <input type="radio" name="options" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px;"  [value]="question.value" > Correct
                       </label>
-                      <label class="btn btn-outline-primary1 btn-primary" style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);">
-                        <input type="radio" name="options" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px;"  [value]="s"> Incorrect
-                      </label>
+                      <label class="btn btn-outline-primary1 btn-primary1" [class.btn-primary]="question.value" style="width: 150px; height: 50px; font-size: 18px;box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.61); border-color: rgba(29, 66, 138, 1);">
+                        <input type="radio" name="options" style="margin-top: 12px; transform: scale(1.6); margin-right: 10px;"  [value]="question.value"> Incorrect
+                      </label> -->
                       <!-- <button type="button" class="btn btn-outline-primary mr-4" style="width: 150px; height: 50px;"> <span style="width: 50px; height:50px;"></span> Complete</button>
                       <button type="button" class="btn btn-outline-primary" style="width: 150px; height: 50px;">Incomplete</button> -->
                     </form>
@@ -512,7 +551,7 @@
             </div>
           </div>
           <div class="card-footer py-0 pl-0 pr-0 d-none d-md-block d-sm-block" style=" width: 100%; background-color: #fff; border-top: none;">
-            <button type="button" class="btn btn-outline-primary pull-left" style="width: 115px; height: 50px;" (click)="nextQuestionSet()">Next</button>
+            <button type="button" class="btn btn-outline-primary pull-left" style="width: 115px; height: 50px;" *ngIf="isNextBtnVissible" (click)="nextQuestionSet()">Next</button>
             <div class="pull-right bg-light" style="padding: 5px 5px; border: 1px solid #ccc;">
               <button type="button" class="btn btn-outline-primary mr-2" (click)="previousQuestionSet()"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
               Q1 - Q4
@@ -525,7 +564,7 @@
             <!-- <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" [@itemState]="paginationState">
               <div *ngFor="let question of question" class="assessment-card-large-devices" > -->
             <div *ngFor="let question of questions | slice:questionListStart:questionListEnd; index as i" [@itemState]="paginationState">
-              <div class="card mt-0 small-device" *ngFor="let question of question" style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 6px; padding: 0px; border-radius: .25rem; display: inline-block;">
+              <div class="card mt-0 small-device" *ngFor="let question of question"  style="width: 100%; height: auto; border: 1px solid #888; margin-bottom: 6px; padding: 0px; border-radius: .25rem; display: inline-block;">
                 <div class="card-body p-0">
                   <div class="row m-0">
                     <div class="col-6 pr-0 my-auto">
